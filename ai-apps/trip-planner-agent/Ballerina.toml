@@ -1,0 +1,17 @@
+[package]
+org = "wso2"
+name = "trip_planner_agent"
+version = "0.1.0"
+
+[build-options]
+sticky = true
+
+[[tool.openapi]]
+id = "HotelAdminAPI"
+targetModule = "hotel_admin_api"
+filePath = "schema/hotelAdminAPI.yaml"
+
+[[tool.openapi]]
+id = "HotelAPI"
+targetModule = "hotel_api"
+filePath = "schema/hotelAPI.yaml"

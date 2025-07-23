@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "bookingDetails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hotelId": { "type": "string" },
+          "hotelName": { "type": "string" },
+          "hotelDescription": { "type": "string" },
+          "hotelType": { "type": "string" },
+          "hotelAmenities": { "type": "string" },
+          "hotelCity": { "type": "string" },
+          "hotelCountry": { "type": "string" },
+          "roomDetails": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "roomName": { "type": "string" },
+                "roomDescription": { "type": "string" },
+                "roomAminities": { "type": "string" }
+              },
+              "required": ["roomName", "roomDescription", "roomAminities"]
+            }
+          },
+          "noOfGuests": { "type": "integer" },
+          "specialRequirements": { "type": "string" }
+        },
+        "required": [
+          "hotelId",
+          "hotelName",
+          "hotelDescription",
+          "hotelType",
+          "hotelAmenities",
+          "hotelCity",
+          "hotelCountry",
+          "roomDetails",
+          "noOfGuests",
+          "specialRequirements"
+        ]
+      }
+    },
+    "reviewDetails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hotelId": { "type": "string" },
+          "comment": { "type": "string" },
+          "rating": { "type": "number" }
+        },
+        "required": ["hotelId", "comment", "rating"]
+      }
+    }
+  },
+  "required": ["bookingDetails", "reviewDetails"]
+}
