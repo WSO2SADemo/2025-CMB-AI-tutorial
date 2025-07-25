@@ -1,6 +1,6 @@
 import ballerina/http;
 
-listener http:Listener hotelSearchService = new (port = 8081);
+listener http:Listener hotelSearchService = new (port = 9090);
 
 // In-memory data storage
 Hotel[] hotels = initializeHotels();
