@@ -9,15 +9,6 @@ User[] users = [];
 Booking[] bookings = initializeBookings();
 final Review[] reviews = initializeReviews();
 
-@http:ServiceConfig {
-    cors: {
-        allowOrigins: ["http://localhost:3000"], // Specify exact origin instead of "*"
-        allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allowHeaders: ["Content-Type", "Authorization", "Accept"],
-        allowCredentials: true, // This is the key missing configuration
-        maxAge: 84900
-    }
-}
 service / on hotelSearchService {
 
     // Search Hotels (Public endpoint)
