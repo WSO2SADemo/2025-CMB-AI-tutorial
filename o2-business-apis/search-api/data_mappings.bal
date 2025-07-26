@@ -2,6 +2,146 @@
 public function initializeHotels() returns Hotel[] {
     return [
         {
+            "hotelId": "hotel_srilanka_knuckles_001",
+            "hotelName": "Knuckles Wilderness Lodge",
+            "description": "An authentic eco-lodge nestled in the heart of Knuckles Mountain Range, powered entirely by renewable energy with a strong commitment to conservation and community development. Built using traditional techniques and local materials.",
+            "address": "Riverstone Estate, Knuckles Range",
+            "city": "Matale",
+            "country": "Sri Lanka",
+            "images": [
+                "https://images.example.com/srilanka/knuckles_wilderness_main.jpg",
+                "https://images.example.com/srilanka/knuckles_wilderness_room.jpg",
+                "https://images.example.com/srilanka/knuckles_wilderness_dining.jpg",
+                "https://images.example.com/srilanka/knuckles_wilderness_view.jpg"
+            ],
+            "rating": 4.7,
+            "reviewCount": 423,
+            "amenities": [
+                "Solar Power",
+                "Rainwater Harvesting",
+                "Organic Garden",
+                "Composting System",
+                "Local Guide Services",
+                "Bird Watching",
+                "Nature Library",
+                "Meditation Deck",
+                "Zero Plastic Policy",
+                "Community Projects",
+                "Wildlife Conservation Programs"
+            ],
+            "propertyType": ["Eco Lodge", "Mountain Lodge", "Sustainable Tourism"],
+            "location": {
+                "latitude": 7.4675,
+                "longitude": 80.7891,
+                "landmark": "Knuckles Mountain Range UNESCO World Heritage Site",
+                "distanceFromCenter": 45.2
+            },
+            "contactInfo": {
+                "phone": "+94-77-123-4567",
+                "email": "info@knuckleswilderness.lk",
+                "website": "https://www.knuckleswilderness.lk"
+            },
+            "checkInOutPolicy": {
+                "checkInTime": "14:00",
+                "checkOutTime": "11:00",
+                "cancellationPolicy": "Free cancellation up to 48 hours before arrival"
+            },
+            "lowestPrice": 95.00,
+            "isAvailable": true
+        },
+        {
+            "hotelId": "hotel_srilanka_bambarakiri_001",
+            "hotelName": "Bambarakiri Eco Lodge",
+            "description": "A cozy eco-lodge with stunning views of tea plantations and mountain peaks. Committed to sustainable practices while providing modern comfort to guests seeking nature immersion.",
+            "address": "Bambarakiri Estate, Kandy Road",
+            "city": "Matale",
+            "country": "Sri Lanka",
+            "images": [
+                "https://images.example.com/srilanka/bambarakiri_main.jpg",
+                "https://images.example.com/srilanka/bambarakiri_tea_view.jpg",
+                "https://images.example.com/srilanka/bambarakiri_room_interior.jpg"
+            ],
+            "rating": 4.3,
+            "reviewCount": 287,
+            "amenities": [
+                "Eco-Friendly Practices",
+                "Tea Plantation Tours",
+                "Hiking Trails",
+                "Organic Meals",
+                "Bird Watching",
+                "Cultural Experiences",
+                "Solar Heating",
+                "Waste Management",
+                "Local Employment"
+            ],
+            "propertyType": ["Eco Lodge", "Tea Estate", "Mountain Retreat"],
+            "location": {
+                "latitude": 7.4123,
+                "longitude": 80.8234,
+                "landmark": "Historic Bambarakiri Tea Estate",
+                "distanceFromCenter": 38.7
+            },
+            "contactInfo": {
+                "phone": "+94-77-234-5678",
+                "email": "reservations@bambarakiri.lk",
+                "website": "https://www.bambarakiri.lk"
+            },
+            "checkInOutPolicy": {
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "cancellationPolicy": "Free cancellation up to 24 hours before arrival"
+            },
+            "lowestPrice": 78.00,
+            "isAvailable": true
+        },
+        {
+            "hotelId": "hotel_srilanka_greenvalley_001",
+            "hotelName": "Green Valley Eco Resort",
+            "description": "A luxurious resort claiming eco-friendly practices while offering modern amenities and comfort. Located near Knuckles Range with easy access to hiking trails.",
+            "address": "Kandy-Mahiyangana Road",
+            "city": "Matale",
+            "country": "Sri Lanka",
+            "images": [
+                "https://images.example.com/srilanka/greenvalley_pool.jpg",
+                "https://images.example.com/srilanka/greenvalley_lobby.jpg",
+                "https://images.example.com/srilanka/greenvalley_suite.jpg"
+            ],
+            "rating": 3.8,
+            "reviewCount": 156,
+            "amenities": [
+                "Swimming Pool",
+                "Air Conditioning",
+                "Spa Services",
+                "Restaurant",
+                "Bar",
+                "WiFi",
+                "Parking",
+                "Room Service",
+                "Gym",
+                "Conference Facilities",
+                "Airport Shuttle"
+            ],
+            "propertyType": ["Resort", "Eco Resort", "Luxury"],
+            "location": {
+                "latitude": 7.3987,
+                "longitude": 80.8456,
+                "landmark": "Near Knuckles Range",
+                "distanceFromCenter": 42.1
+            },
+            "contactInfo": {
+                "phone": "+94-77-345-6789",
+                "email": "info@greenvalleyresort.lk",
+                "website": "https://www.greenvalleyresort.lk"
+            },
+            "checkInOutPolicy": {
+                "checkInTime": "14:00",
+                "checkOutTime": "12:00",
+                "cancellationPolicy": "Free cancellation up to 72 hours before arrival"
+            },
+            "lowestPrice": 145.00,
+            "isAvailable": true
+        },
+        {
             hotelId: "HTL001",
             hotelName: "Grand Luxury Palace",
             description: "Experience ultimate luxury in the heart of the city with world-class amenities and exceptional service.",
@@ -316,6 +456,287 @@ public function initializeHotels() returns Hotel[] {
 
 public function initializeRooms() returns Room[] {
     return [
+        {
+            "roomId": "room_bambarakiri_tea_001",
+            "hotelId": "hotel_srilanka_bambarakiri_001",
+            "roomType": "Standard Eco Room",
+            "roomName": "Tea Garden View Room",
+            "description": "Comfortable room with panoramic views of rolling tea plantations and distant mountains. Features sustainable amenities and locally crafted furniture made from reclaimed tea estate wood.",
+            "maxOccupancy": 2,
+            "pricePerNight": 78.00,
+            "images": [
+                "https://images.example.com/rooms/bambarakiri_tea_view_exterior.jpg",
+                "https://images.example.com/rooms/bambarakiri_tea_view_interior.jpg",
+                "https://images.example.com/rooms/bambarakiri_tea_view_balcony.jpg"
+            ],
+            "amenities": [
+                "Tea Plantation View",
+                "Private Balcony",
+                "Eco-Friendly Toiletries",
+                "Ceiling Fan",
+                "Hot Water",
+                "Tea Making Facilities",
+                "Local Wood Furniture",
+                "Cotton Linens",
+                "Reading Nook",
+                "Mosquito Net"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 0,
+                "doubleBeds": 1,
+                "kingBeds": 0,
+                "queenBeds": 0
+            },
+            "roomSize": 28.0,
+            "availableCount": 12
+        },
+        {
+            "roomId": "room_bambarakiri_mountain_001",
+            "hotelId": "hotel_srilanka_bambarakiri_001",
+            "roomType": "Suite",
+            "roomName": "Mountain View Suite",
+            "description": "Spacious suite with stunning views of Knuckles Mountain Range. Features separate living area, private deck, and premium eco-friendly amenities. Perfect for extended stays.",
+            "maxOccupancy": 3,
+            "pricePerNight": 115.00,
+            "images": [
+                "https://images.example.com/rooms/bambarakiri_suite_living.jpg",
+                "https://images.example.com/rooms/bambarakiri_suite_bedroom.jpg",
+                "https://images.example.com/rooms/bambarakiri_suite_deck.jpg"
+            ],
+            "amenities": [
+                "Mountain View",
+                "Separate Living Area",
+                "Private Deck",
+                "Mini Refrigerator",
+                "Ceiling Fan",
+                "Hot Water",
+                "Premium Toiletries",
+                "Tea/Coffee Station",
+                "Dining Table",
+                "Sofa Seating",
+                "Cotton Bathrobes",
+                "Daily Housekeeping"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 1,
+                "doubleBeds": 0,
+                "kingBeds": 1,
+                "queenBeds": 0
+            },
+            "roomSize": 45.0,
+            "availableCount": 6
+        },
+        {
+            "roomId": "room_bambarakiri_heritage_001",
+            "hotelId": "hotel_srilanka_bambarakiri_001",
+            "roomType": "Heritage Room",
+            "roomName": "Planter's Heritage Bungalow",
+            "description": "Restored colonial-era planter's quarters with original hardwood floors and period furniture. Combines historic charm with modern sustainable practices and breathtaking estate views.",
+            "maxOccupancy": 2,
+            "pricePerNight": 95.00,
+            "images": [
+                "https://images.example.com/rooms/bambarakiri_heritage_exterior.jpg",
+                "https://images.example.com/rooms/bambarakiri_heritage_bedroom.jpg",
+                "https://images.example.com/rooms/bambarakiri_heritage_veranda.jpg"
+            ],
+            "amenities": [
+                "Historic Architecture",
+                "Original Hardwood Floors",
+                "Period Furniture",
+                "Wraparound Veranda",
+                "Garden View",
+                "High Ceilings",
+                "Vintage Ceiling Fans",
+                "Antique Furnishings",
+                "Tea Estate History Books",
+                "Traditional Decor"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 0,
+                "doubleBeds": 0,
+                "kingBeds": 0,
+                "queenBeds": 1
+            },
+            "roomSize": 38.0,
+            "availableCount": 4
+        },
+        {
+            "roomId": "room_greenvalley_deluxe_001",
+            "hotelId": "hotel_srilanka_greenvalley_001",
+            "roomType": "Deluxe Room",
+            "roomName": "Deluxe Resort Room",
+            "description": "Modern air-conditioned room with contemporary furnishings and resort amenities. Features mountain views and access to all resort facilities including pool and spa.",
+            "maxOccupancy": 2,
+            "pricePerNight": 145.00,
+            "images": [
+                "https://images.example.com/rooms/greenvalley_deluxe_interior.jpg",
+                "https://images.example.com/rooms/greenvalley_deluxe_bathroom.jpg",
+                "https://images.example.com/rooms/greenvalley_deluxe_balcony.jpg"
+            ],
+            "amenities": [
+                "Air Conditioning",
+                "Flat Screen TV",
+                "Mini Bar",
+                "Room Service",
+                "Private Balcony",
+                "WiFi",
+                "Coffee Machine",
+                "Hair Dryer",
+                "Safe",
+                "Bathrobes",
+                "Slippers",
+                "Daily Housekeeping",
+                "Pool Access"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 0,
+                "doubleBeds": 0,
+                "kingBeds": 1,
+                "queenBeds": 0
+            },
+            "roomSize": 32.0,
+            "availableCount": 24
+        },
+        {
+            "roomId": "room_greenvalley_suite_001",
+            "hotelId": "hotel_srilanka_greenvalley_001",
+            "roomType": "Suite",
+            "roomName": "Premium Valley Suite",
+            "description": "Luxurious suite with separate living and dining areas, premium amenities, and panoramic valley views. Includes access to exclusive facilities and personalized service.",
+            "maxOccupancy": 4,
+            "pricePerNight": 225.00,
+            "images": [
+                "https://images.example.com/rooms/greenvalley_suite_living.jpg",
+                "https://images.example.com/rooms/greenvalley_suite_bedroom.jpg",
+                "https://images.example.com/rooms/greenvalley_suite_dining.jpg"
+            ],
+            "amenities": [
+                "Air Conditioning",
+                "Separate Living Room",
+                "Dining Area",
+                "Premium Mini Bar",
+                "Large Balcony",
+                "Jacuzzi",
+                "Walk-in Closet",
+                "Premium WiFi",
+                "Butler Service",
+                "Welcome Fruit Basket",
+                "Complimentary Laundry",
+                "Exclusive Pool Access",
+                "Spa Credits"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 0,
+                "doubleBeds": 1,
+                "kingBeds": 1,
+                "queenBeds": 0
+            },
+            "roomSize": 65.0,
+            "availableCount": 8
+        },
+        {
+            "roomId": "room_greenvalley_family_001",
+            "hotelId": "hotel_srilanka_greenvalley_001",
+            "roomType": "Family Room",
+            "roomName": "Family Valley Room",
+            "description": "Spacious family-oriented room with multiple bed configurations and child-friendly amenities. Perfect for families seeking resort comfort with easy access to recreational facilities.",
+            "maxOccupancy": 6,
+            "pricePerNight": 185.00,
+            "images": [
+                "https://images.example.com/rooms/greenvalley_family_layout.jpg",
+                "https://images.example.com/rooms/greenvalley_family_kids_area.jpg",
+                "https://images.example.com/rooms/greenvalley_family_bathroom.jpg"
+            ],
+            "amenities": [
+                "Air Conditioning",
+                "Connecting Rooms Available",
+                "Kids Play Area",
+                "Family Entertainment System",
+                "Mini Refrigerator",
+                "Microwave",
+                "Baby Crib Available",
+                "Child Safety Features",
+                "Game Console",
+                "Kids Welcome Kit",
+                "Family Pool Access",
+                "Children's Menu"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 2,
+                "doubleBeds": 1,
+                "kingBeds": 0,
+                "queenBeds": 1
+            },
+            "roomSize": 48.0,
+            "availableCount": 16
+        },
+        {
+            "roomId": "room_greenvalley_standard_001",
+            "hotelId": "hotel_srilanka_greenvalley_001",
+            "roomType": "Standard Room",
+            "roomName": "Standard Resort Room",
+            "description": "Comfortable standard room with essential modern amenities and resort access. Good value option for guests who want resort facilities without premium pricing.",
+            "maxOccupancy": 2,
+            "pricePerNight": 98.00,
+            "images": [
+                "https://images.example.com/rooms/greenvalley_standard_room.jpg",
+                "https://images.example.com/rooms/greenvalley_standard_bath.jpg"
+            ],
+            "amenities": [
+                "Air Conditioning",
+                "Cable TV",
+                "WiFi",
+                "Mini Refrigerator",
+                "Coffee Maker",
+                "Hair Dryer",
+                "Safe",
+                "Daily Housekeeping",
+                "Pool Access",
+                "Fitness Center Access",
+                "Restaurant Access"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 0,
+                "doubleBeds": 1,
+                "kingBeds": 0,
+                "queenBeds": 0
+            },
+            "roomSize": 25.0,
+            "availableCount": 32
+        },
+        {
+            "roomId": "room_knuckles_bamboo_001",
+            "hotelId": "hotel_srilanka_knuckles_001",
+            "roomType": "Eco Cabin",
+            "roomName": "Bamboo Forest Cabin",
+            "description": "Sustainably built bamboo cabin with panoramic forest views, natural ventilation, and eco-friendly amenities. Features traditional Sri Lankan architecture with modern eco-technology.",
+            "maxOccupancy": 2,
+            "pricePerNight": 95.00,
+            "images": [
+                "https://images.example.com/rooms/bamboo_cabin_exterior.jpg",
+                "https://images.example.com/rooms/bamboo_cabin_interior.jpg",
+                "https://images.example.com/rooms/bamboo_cabin_bathroom.jpg"
+            ],
+            "amenities": [
+                "Natural Ventilation",
+                "Bamboo Furniture",
+                "Organic Linens",
+                "Rainforest View",
+                "Private Deck",
+                "Eco-Friendly Toiletries",
+                "Mosquito Netting",
+                "Reading Corner",
+                "Meditation Space"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 0,
+                "doubleBeds": 1,
+                "kingBeds": 0,
+                "queenBeds": 0
+            },
+            "roomSize": 35.0,
+            "availableCount": 8
+        },
         // Grand Luxury Palace Rooms
         {
             roomId: "R001",
@@ -595,8 +1016,347 @@ public function initializeRooms() returns Room[] {
     ];
 }
 
+public function initializeNearbyAttractions() returns NearbyAttractionsResponse[] {
+    return [
+        {
+            "hotelId": "hotel_srilanka_knuckles_001",
+            "attractions": [
+                {
+                    "name": "Knuckles Peak Summit Trail",
+                    "category": "Hiking Trail",
+                    "distance": 5.2,
+                    "location": {
+                        "latitude": 7.4721,
+                        "longitude": 80.7923,
+                        "landmark": "Highest peak in Knuckles Range - 1863m elevation",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Riverstone Plateau",
+                    "category": "Scenic Viewpoint",
+                    "distance": 3.8,
+                    "location": {
+                        "latitude": 7.4656,
+                        "longitude": 80.7856,
+                        "landmark": "360-degree mountain views and rare flora",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Mini World's End",
+                    "category": "Cliff Viewpoint",
+                    "distance": 7.1,
+                    "location": {
+                        "latitude": 7.4789,
+                        "longitude": 80.7834,
+                        "landmark": "Dramatic cliff drop with cloud forest views",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Bambarakiri Falls",
+                    "category": "Waterfall",
+                    "distance": 4.5,
+                    "location": {
+                        "latitude": 7.4601,
+                        "longitude": 80.8012,
+                        "landmark": "Three-tiered waterfall with natural pools",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Dothalugala Ancient Temple",
+                    "category": "Cultural Heritage",
+                    "distance": 6.8,
+                    "location": {
+                        "latitude": 7.4512,
+                        "longitude": 80.7678,
+                        "landmark": "12th century Buddhist temple with forest monastery",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Knuckles Conservation Forest",
+                    "category": "Wildlife Sanctuary",
+                    "distance": 2.1,
+                    "location": {
+                        "latitude": 7.4698,
+                        "longitude": 80.7867,
+                        "landmark": "Endemic species sanctuary - 34% of Sri Lanka's endemic trees",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Corbett's Gap Trail",
+                    "category": "Hiking Trail",
+                    "distance": 8.3,
+                    "location": {
+                        "latitude": 7.4834,
+                        "longitude": 80.7756,
+                        "landmark": "Historic British-era mountain pass with tea estate views",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Pitawela Pathana Grasslands",
+                    "category": "Scenic Grasslands",
+                    "distance": 9.7,
+                    "location": {
+                        "latitude": 7.4912,
+                        "longitude": 80.7623,
+                        "landmark": "Montane grasslands with endemic bird species",
+                        "distanceFromCenter": null
+                    }
+                }
+            ]
+        },
+        {
+            "hotelId": "hotel_srilanka_bambarakiri_001",
+            "attractions": [
+                {
+                    "name": "Bambarakiri Tea Estate Tour",
+                    "category": "Cultural Experience",
+                    "distance": 0.5,
+                    "location": {
+                        "latitude": 7.4134,
+                        "longitude": 80.8245,
+                        "landmark": "Historic tea plantation established 1897",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Riverstone Plateau",
+                    "category": "Scenic Viewpoint",
+                    "distance": 6.2,
+                    "location": {
+                        "latitude": 7.4656,
+                        "longitude": 80.7856,
+                        "landmark": "360-degree mountain views and rare flora",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Bambarakiri Falls",
+                    "category": "Waterfall",
+                    "distance": 2.3,
+                    "location": {
+                        "latitude": 7.4201,
+                        "longitude": 80.8156,
+                        "landmark": "Three-tiered waterfall accessible via tea estate trails",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Knuckles Range Foothills Trail",
+                    "category": "Hiking Trail",
+                    "distance": 4.7,
+                    "location": {
+                        "latitude": 7.4389,
+                        "longitude": 80.8023,
+                        "landmark": "Moderate hiking trail through mixed forest and tea gardens",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Wattegama Village",
+                    "category": "Cultural Village",
+                    "distance": 3.1,
+                    "location": {
+                        "latitude": 7.4067,
+                        "longitude": 80.8367,
+                        "landmark": "Traditional village with spice gardens and local crafts",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Sembuwatta Lake",
+                    "category": "Natural Lake",
+                    "distance": 8.9,
+                    "location": {
+                        "latitude": 7.3845,
+                        "longitude": 80.8534,
+                        "landmark": "Artificial lake surrounded by pine forest",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Aluvihare Rock Temple",
+                    "category": "Cultural Heritage",
+                    "distance": 12.4,
+                    "location": {
+                        "latitude": 7.4567,
+                        "longitude": 80.8789,
+                        "landmark": "Historic Buddhist temple where Tripitaka was first written",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Hunnasgiriya Mountain",
+                    "category": "Hiking Trail",
+                    "distance": 11.8,
+                    "location": {
+                        "latitude": 7.3912,
+                        "longitude": 80.8912,
+                        "landmark": "Sacred mountain with panoramic views of central highlands",
+                        "distanceFromCenter": null
+                    }
+                }
+            ]
+        },
+        {
+            "hotelId": "hotel_srilanka_greenvalley_001",
+            "attractions": [
+                {
+                    "name": "Knuckles Range Entry Point",
+                    "category": "Hiking Access",
+                    "distance": 8.5,
+                    "location": {
+                        "latitude": 7.4234,
+                        "longitude": 80.8123,
+                        "landmark": "Main access point to Knuckles Mountain Range trails",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Mahiyangana Temple",
+                    "category": "Cultural Heritage",
+                    "distance": 15.7,
+                    "location": {
+                        "latitude": 7.3223,
+                        "longitude": 81.0034,
+                        "landmark": "Ancient Buddhist temple - first visited by Buddha",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Hulu River Rapids",
+                    "category": "Adventure Sports",
+                    "distance": 5.3,
+                    "location": {
+                        "latitude": 7.3834,
+                        "longitude": 80.8634,
+                        "landmark": "White water rafting and river adventures",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Matale Spice Gardens",
+                    "category": "Cultural Experience",
+                    "distance": 18.2,
+                    "location": {
+                        "latitude": 7.4687,
+                        "longitude": 80.6234,
+                        "landmark": "Traditional spice cultivation and processing center",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Palapathwela Tea Factory",
+                    "category": "Industrial Tour",
+                    "distance": 7.9,
+                    "location": {
+                        "latitude": 7.4156,
+                        "longitude": 80.8789,
+                        "landmark": "Working tea factory with guided tours",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Knuckles Foothills Safari",
+                    "category": "Wildlife Experience",
+                    "distance": 6.8,
+                    "location": {
+                        "latitude": 7.4089,
+                        "longitude": 80.8345,
+                        "landmark": "Jeep safari to spot endemic wildlife and birds",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Rattota Golf Club",
+                    "category": "Recreation",
+                    "distance": 22.1,
+                    "location": {
+                        "latitude": 7.5234,
+                        "longitude": 80.5678,
+                        "landmark": "18-hole golf course with mountain views",
+                        "distanceFromCenter": null
+                    }
+                },
+                {
+                    "name": "Victoria Dam Viewpoint",
+                    "category": "Scenic Viewpoint",
+                    "distance": 13.4,
+                    "location": {
+                        "latitude": 7.2456,
+                        "longitude": 80.7234,
+                        "landmark": "Large hydroelectric dam with reservoir views",
+                        "distanceFromCenter": null
+                    }
+                }
+            ]
+        }
+    ];
+
+}
+
 public isolated function initializeReviews() returns Review[] {
     return [
+        {
+            "reviewId": "review_001",
+            "hotelId": "hotel_indonesia_eco_001",
+            "userId": "user_john_001",
+            "userName": "John H.",
+            "rating": 4.8,
+            "title": "Authentic Eco Experience in the Heart of Nature",
+            "comment": "Finally found a lodge that actually practices what they preach! Solar powered facilities, rainwater harvesting, locally sourced organic meals, and zero single-use plastics. The bamboo construction blends perfectly with the forest. Staff are genuinely committed to conservation and the guided jungle treks were incredible. Saw orangutans on day 3! The composting toilets might not be for everyone, but I appreciated the commitment to sustainability. Will definitely return.",
+            "reviewDate": "2023-07-25T10:15:00Z",
+            "categories": {
+                "cleanliness": 4.5,
+                "comfort": 4.2,
+                "location": 5.0,
+                "service": 4.9,
+                "valueForMoney": 4.8
+            },
+            "isVerifiedStay": true
+        },
+        {
+            "reviewId": "review_002",
+            "hotelId": "hotel_malaysia_fake_eco_001",
+            "userId": "user_john_001",
+            "userName": "John H.",
+            "rating": 2.1,
+            "title": "Greenwashing at its Worst - Avoid if You Care About Environment",
+            "comment": "What a disappointment! They market themselves as an 'eco lodge' but it's just regular hotel with some plants around. No renewable energy, excessive plastic packaging everywhere, imported food, air conditioning running 24/7 even when rooms are empty. The 'nature walk' was a 15-minute stroll around a manicured garden. Staff had no knowledge about local ecosystems or conservation efforts. The only 'eco' thing was the higher price tag. Save your money and go to a place that actually cares about the environment.",
+            "reviewDate": "2023-09-28T14:22:00Z",
+            "categories": {
+                "cleanliness": 3.5,
+                "comfort": 3.8,
+                "location": 2.5,
+                "service": 2.0,
+                "valueForMoney": 1.5
+            },
+            "isVerifiedStay": true
+        },
+        {
+            "reviewId": "review_003",
+            "hotelId": "hotel_india_himalayan_001",
+            "userId": "user_john_001",
+            "userName": "John H.",
+            "rating": 4.6,
+            "title": "High Altitude Paradise for Eco-Conscious Hikers",
+            "comment": "Incredible location at 3200m elevation with panoramic mountain views. Lodge runs entirely on hydroelectric power from nearby stream. Traditional stone and timber construction using local materials. Food is grown in their own organic garden - best dal I've ever tasted! The multi-day trek to base camp was expertly guided with focus on Leave No Trace principles. Lodge partners with local communities for employment and conservation. Only downside was altitude sickness on day 1, but that's not their fault! Perfect for serious hikers who want comfort without compromising environmental values.",
+            "reviewDate": "2022-10-22T08:45:00Z",
+            "categories": {
+                "cleanliness": 4.3,
+                "comfort": 4.1,
+                "location": 5.0,
+                "service": 4.8,
+                "valueForMoney": 4.7
+            },
+            "isVerifiedStay": true
+        },
         {
             reviewId: "REV001",
             hotelId: "HTL001",
@@ -819,6 +1579,110 @@ public isolated function initializeReviews() returns Review[] {
 // Mock booking data initialization
 public function initializeBookings() returns Booking[] {
     return [
+        {
+            "bookingId": "booking_003",
+            "hotelId": "hotel_india_himalayan_001",
+            "rooms": [{"roomId": "room_mountain_001", "numberOfRooms": 1}],
+            "userId": "user_john_001",
+            "checkInDate": "2022-10-12",
+            "checkOutDate": "2022-10-18",
+            "numberOfGuests": 1,
+            "primaryGuest": {
+                "firstName": "John",
+                "lastName": "Harrison",
+                "email": "john.harrison@gmail.com",
+                "phoneNumber": "+1-604-555-0123",
+                "nationality": "Canadian"
+            },
+            "pricing": [
+                {
+                    "roomRate": 75.00,
+                    "numberOfNights": 6,
+                    "subtotal": 450.00,
+                    "taxes": 54.00,
+                    "serviceFees": 22.50,
+                    "totalAmount": 526.50,
+                    "currency": "USD"
+                }
+            ],
+            specialRequests: (),
+            "bookingStatus": "COMPLETED",
+            "bookingDate": "2022-09-05T16:30:00Z",
+            "confirmationNumber": "HIM003JH"
+        },
+        {
+            "bookingId": "booking_002",
+            "hotelId": "hotel_malaysia_fake_eco_001",
+            "rooms": [{"roomId": "room_green_001", "numberOfRooms": 1}],
+            "userId": "user_john_001",
+            "checkInDate": "2023-09-20",
+            "checkOutDate": "2023-09-25",
+            "numberOfGuests": 1,
+            "primaryGuest": {
+                "firstName": "John",
+                "lastName": "Harrison",
+                "email": "john.harrison@gmail.com",
+                "phoneNumber": "+1-604-555-0123",
+                "nationality": "Canadian"
+            },
+            "pricing": [
+                {
+                    "roomRate": 120.00,
+                    "numberOfNights": 5,
+                    "subtotal": 600.00,
+                    "taxes": 72.00,
+                    "serviceFees": 36.00,
+                    "totalAmount": 708.00,
+                    "currency": "USD"
+                }
+            ],
+            "bookingStatus": "COMPLETED",
+            "bookingDate": "2023-08-15T09:45:00Z",
+            "confirmationNumber": "GRN002JH",
+            "specialRequests": {
+                "dietaryRequirements": "Organic, locally sourced meals",
+                "otherRequests": "Interested in guided nature walks and sustainability tours",
+                "accessibilityNeeds": null,
+                "bedPreference": "King bed"
+            }
+        },
+        {
+            "bookingId": "booking_001",
+            "hotelId": "hotel_indonesia_eco_001",
+            "rooms": [{"roomId": "room_bamboo_001", "numberOfRooms": 1}],
+            "userId": "user_john_001",
+            "checkInDate": "2023-07-15",
+            "checkOutDate": "2023-07-22",
+            "numberOfGuests": 1,
+            "primaryGuest": {
+                "firstName": "John",
+                "lastName": "Harrison",
+                "email": "john.harrison@gmail.com",
+                "phoneNumber": "+1-604-555-0123",
+                "nationality": "Canadian"
+            },
+            "pricing": [
+                {
+                    "roomRate": 85.00,
+                    "numberOfNights": 7,
+                    "subtotal": 595.00,
+                    "taxes": 59.50,
+                    "serviceFees": 29.75,
+                    "totalAmount": 684.25,
+                    "currency": "USD"
+                }
+            ],
+            "bookingStatus": "COMPLETED",
+            "bookingDate": "2023-06-10T14:20:00Z",
+            "confirmationNumber": "ECO001JH",
+            "specialRequests": {
+                "dietaryRequirements": "Vegetarian meals preferred",
+                "accessibilityNeeds": null,
+                "bedPreference": "Single bed",
+                "petFriendly": false,
+                "otherRequests": "Request room with forest view for early morning bird watching"
+            }
+        },
         {
             bookingId: "BKG001",
             hotelId: "HTL001",

@@ -103,6 +103,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorPayload'
+  /hotels/{hotelId}/attractions:
+    get:
+      operationId: getHotelsHotelidAttractions
+      parameters:
+      - name: hotelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/NearbyAttractionsResponse'
+                - $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
   /hotels/{hotelId}:
     get:
       operationId: getHotelsHotelid
@@ -385,8 +409,6 @@ components:
       additionalProperties: false
     Location:
       required:
-      - distanceFromCenter
-      - landmark
       - latitude
       - longitude
       type: object
@@ -407,8 +429,8 @@ components:
       required:
       - category
       - distance
+      - location
       - name
-      - unit
       type: object
       properties:
         name:
@@ -418,8 +440,21 @@ components:
         distance:
           type: number
           format: double
-        unit:
+        location:
+          $ref: '#/components/schemas/Location'
+      additionalProperties: false
+    NearbyAttractionsResponse:
+      required:
+      - attractions
+      - hotelId
+      type: object
+      properties:
+        hotelId:
           type: string
+        attractions:
+          type: array
+          items:
+            $ref: '#/components/schemas/NearbyAttractions'
       additionalProperties: false
     PriceRange:
       required:

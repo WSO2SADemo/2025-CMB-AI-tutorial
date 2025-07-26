@@ -8,7 +8,17 @@ Room[] rooms = initializeRooms();
 User[] users = [];
 Booking[] bookings = initializeBookings();
 final Review[] reviews = initializeReviews();
+NearbyAttractionsResponse[] nearbyAttractions = initializeNearbyAttractions();
 
+@http:ServiceConfig {
+    cors: {
+        allowOrigins: ["http://localhost:3000"], // Specify exact origin instead of "*"
+        allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowHeaders: ["Content-Type", "Authorization", "Accept"],
+        allowCredentials: true, // This is the key missing configuration
+        maxAge: 84900
+    }
+}
 service / on hotelSearchService {
 
     // Search Hotels (Public endpoint)
@@ -65,6 +75,20 @@ service / on hotelSearchService {
         };
     }
 
+    // Get Nearby Attractions (Public endpoint)
+    resource function get hotels/[string hotelId]/attractions() returns NearbyAttractionsResponse|ErrorResponse {
+        foreach NearbyAttractionsResponse attraction in nearbyAttractions {
+            if (attraction.hotelId == hotelId) {
+                return attraction;
+            }
+        }
+        return {
+            message: "No nearby attractions found for this hotel",
+            errorCode: "NO_ATTRACTIONS_FOUND",
+            timestamp: getCurrentTimestamp()
+        };
+    }
+
     // Get Hotel Details (Public endpoint)
     resource function get hotels/[string hotelId]() returns HotelDetailsResponse|ErrorResponse {
         Hotel? hotel = findHotelById(hotels, hotelId);
@@ -80,9 +104,9 @@ service / on hotelSearchService {
         Review[] hotelReviews = getHotelReviews(reviews, hotelId);
 
         NearbyAttractions[] nearbyAttractions = [
-            {name: "Central Park", category: "Park", distance: 0.5, unit: "km"},
-            {name: "Museum of Modern Art", category: "Museum", distance: 1.2, unit: "km"},
-            {name: "Times Square", category: "Entertainment", distance: 2.1, unit: "km"}
+            {name: "Central Park", category: "Park", distance: 0.5, location: {latitude: 0, longitude: 0}},
+            {name: "Museum of Modern Art", category: "Museum", distance: 1.2, location: {latitude: 0, longitude: 0}},
+            {name: "Times Square", category: "Entertainment", distance: 2.1, location: {latitude: 0, longitude: 0}}
         ];
 
         return {

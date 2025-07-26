@@ -52,8 +52,8 @@ public type Hotel record {|
 public type Location record {|
     decimal latitude;
     decimal longitude;
-    string landmark;
-    decimal distanceFromCenter;
+    string landmark?;
+    decimal distanceFromCenter?;
 |};
 
 public type ContactInfo record {|
@@ -248,11 +248,16 @@ public type HotelDetailsResponse record {|
     NearbyAttractions[] nearbyAttractions;
 |};
 
+public type NearbyAttractionsResponse record {|
+    string hotelId;
+    NearbyAttractions[] attractions;
+|};
+
 public type NearbyAttractions record {|
     string name;
     string category;
     decimal distance;
-    string unit;
+    Location location;
 |};
 
 public type AvailabilityResponse record {|
