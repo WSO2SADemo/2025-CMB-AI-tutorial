@@ -234,6 +234,38 @@ public function initializeHotels() returns Hotel[] {
             lowestPrice: 159.99,
             isAvailable: true
         },
+
+        {
+            hotelId: "HTL006",
+            hotelName: "Tropical Island Resort",
+            description: "Exclusive private island resort with overwater bungalows and pristine beaches.",
+            address: "Coral Atoll",
+            city: "Malé",
+            country: "Maldives",
+            images: ["hotel6_1.jpg", "hotel6_2.jpg", "hotel6_3.jpg"],
+            rating: 4.7,
+            reviewCount: 2156,
+            amenities: ["Overwater Bungalows", "Private Beach", "Diving Center", "Spa", "Multiple Restaurants", "Water Sports", "Seaplane Transfer"],
+            propertyType: ["Resort", "Island", "Luxury"],
+            location: {
+                latitude: 4.1755,
+                longitude: 73.5093,
+                landmark: "Private Island",
+                distanceFromCenter: 45.0
+            },
+            contactInfo: {
+                phone: "+960-664-1234",
+                email: "paradise@tropicalislandresort.mv",
+                website: "www.tropicalislandresort.mv"
+            },
+            checkInOutPolicy: {
+                checkInTime: "14:00",
+                checkOutTime: "12:00",
+                cancellationPolicy: "Free cancellation up to 7 days before check-in"
+            },
+            lowestPrice: 850.00,
+            isAvailable: true
+        },
         {
             hotelId: "HTL004",
             hotelName: "Business Executive Suites",
@@ -294,37 +326,6 @@ public function initializeHotels() returns Hotel[] {
                 cancellationPolicy: "Free cancellation up to 48 hours before check-in"
             },
             lowestPrice: 450.00,
-            isAvailable: true
-        },
-        {
-            hotelId: "HTL006",
-            hotelName: "Tropical Island Resort",
-            description: "Exclusive private island resort with overwater bungalows and pristine beaches.",
-            address: "Coral Atoll",
-            city: "Malé",
-            country: "Maldives",
-            images: ["hotel6_1.jpg", "hotel6_2.jpg", "hotel6_3.jpg"],
-            rating: 4.7,
-            reviewCount: 2156,
-            amenities: ["Overwater Bungalows", "Private Beach", "Diving Center", "Spa", "Multiple Restaurants", "Water Sports", "Seaplane Transfer"],
-            propertyType: ["Resort", "Island", "Luxury"],
-            location: {
-                latitude: 4.1755,
-                longitude: 73.5093,
-                landmark: "Private Island",
-                distanceFromCenter: 45.0
-            },
-            contactInfo: {
-                phone: "+960-664-1234",
-                email: "paradise@tropicalislandresort.mv",
-                website: "www.tropicalislandresort.mv"
-            },
-            checkInOutPolicy: {
-                checkInTime: "14:00",
-                checkOutTime: "12:00",
-                cancellationPolicy: "Free cancellation up to 7 days before check-in"
-            },
-            lowestPrice: 850.00,
             isAvailable: true
         },
         {
@@ -450,12 +451,239 @@ public function initializeHotels() returns Hotel[] {
             },
             lowestPrice: 520.00,
             isAvailable: true
+        },
+        {
+            "hotelId": "hotel_indonesia_eco_001",
+            "hotelName": "Borneo Rainforest Eco Lodge",
+            "description": "An authentic eco-lodge deep in the Bornean rainforest, committed to conservation and sustainable tourism. Features solar power, rainwater harvesting, zero plastic policy, and partnerships with local conservation groups. Built entirely from sustainable bamboo and recycled materials.",
+            "address": "Danum Valley Conservation Area, Lahad Datu",
+            "city": "Lahad Datu",
+            "country": "Indonesia",
+            "images": [
+                "https://images.example.com/indonesia/borneo_eco_main.jpg",
+                "https://images.example.com/indonesia/borneo_eco_canopy.jpg",
+                "https://images.example.com/indonesia/borneo_eco_solar.jpg",
+                "https://images.example.com/indonesia/borneo_eco_orangutan.jpg"
+            ],
+            "rating": 4.8,
+            "reviewCount": 312,
+            "amenities": [
+                "100% Solar Power",
+                "Rainwater Harvesting",
+                "Zero Plastic Policy",
+                "Organic Garden",
+                "Composting Toilets",
+                "Local Guide Services",
+                "Orangutan Viewing",
+                "Canopy Walks",
+                "Bird Watching",
+                "Conservation Programs",
+                "Local Community Employment",
+                "Natural Building Materials"
+            ],
+            "propertyType": ["Eco Lodge", "Rainforest Lodge", "Conservation Tourism"],
+            "location": {
+                "latitude": 4.9583,
+                "longitude": 117.8014,
+                "landmark": "Danum Valley Conservation Area - Virgin Rainforest",
+                "distanceFromCenter": 85.3
+            },
+            "contactInfo": {
+                "phone": "+62-89-123-456789",
+                "email": "info@borneoeco.com",
+                "website": "https://www.borneorainforestlodge.com"
+            },
+            "checkInOutPolicy": {
+                "checkInTime": "14:00",
+                "checkOutTime": "11:00",
+                "cancellationPolicy": "Free cancellation up to 72 hours before arrival"
+            },
+            "lowestPrice": 85.00,
+            "isAvailable": true
+        },
+        {
+            "hotelId": "hotel_malaysia_fake_eco_001",
+            "hotelName": "Green Paradise Resort & Spa",
+            "description": "A luxury resort claiming eco-friendly practices while offering modern amenities and spa services. Located near Cameron Highlands with manicured gardens and contemporary facilities marketed as 'sustainable luxury'.",
+            "address": "Jalan Pecah Batu, Cameron Highlands",
+            "city": "Cameron Highlands",
+            "country": "Malaysia",
+            "images": [
+                "https://images.example.com/malaysia/green_paradise_pool.jpg",
+                "https://images.example.com/malaysia/green_paradise_spa.jpg",
+                "https://images.example.com/malaysia/green_paradise_restaurant.jpg",
+                "https://images.example.com/malaysia/green_paradise_garden.jpg"
+            ],
+            "rating": 3.2,
+            "reviewCount": 189,
+            "amenities": [
+                "Swimming Pool",
+                "Full Service Spa",
+                "Air Conditioning",
+                "WiFi",
+                "Restaurant",
+                "Bar",
+                "Gym",
+                "Room Service",
+                "Manicured Gardens",
+                "Gift Shop",
+                "Conference Facilities",
+                "Airport Shuttle",
+                "Laundry Service",
+                "Concierge"
+            ],
+            "propertyType": ["Resort", "Spa Resort", "Eco Resort"],
+            "location": {
+                "latitude": 4.4696,
+                "longitude": 101.3890,
+                "landmark": "Cameron Highlands Tea Plantations",
+                "distanceFromCenter": 12.5
+            },
+            "contactInfo": {
+                "phone": "+60-5-491-2345",
+                "email": "reservations@greenparadise.my",
+                "website": "https://www.greenparadiseresort.com"
+            },
+            "checkInOutPolicy": {
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "cancellationPolicy": "Free cancellation up to 24 hours before arrival"
+            },
+            "lowestPrice": 120.00,
+            "isAvailable": true
+        },
+        {
+            "hotelId": "hotel_india_himalayan_001",
+            "hotelName": "Himalayan Base Camp Eco Lodge",
+            "description": "High-altitude eco-lodge at 3200m elevation, powered entirely by micro-hydroelectric system. Built using traditional stone and timber construction with local materials. Partners with local communities for employment and operates organic mountain gardens.",
+            "address": "Kedarnath Wildlife Sanctuary, Rudraprayag",
+            "city": "Rudraprayag",
+            "country": "India",
+            "images": [
+                "https://images.example.com/india/himalayan_base_panorama.jpg",
+                "https://images.example.com/india/himalayan_base_stone.jpg",
+                "https://images.example.com/india/himalayan_base_garden.jpg",
+                "https://images.example.com/india/himalayan_base_peaks.jpg"
+            ],
+            "rating": 4.6,
+            "reviewCount": 278,
+            "amenities": [
+                "Hydroelectric Power",
+                "Organic Mountain Garden",
+                "Local Stone Construction",
+                "Community Employment",
+                "High Altitude Acclimatization",
+                "Guided Treks",
+                "Meditation Areas",
+                "Prayer Flags",
+                "Local Cuisine",
+                "Leave No Trace Programs",
+                "Wildlife Conservation",
+                "Stargazing Deck",
+                "Traditional Heating",
+                "Mountain Water Supply"
+            ],
+            "propertyType": ["Eco Lodge", "Mountain Lodge", "Trekking Base"],
+            "location": {
+                "latitude": 30.7346,
+                "longitude": 79.0669,
+                "landmark": "Kedarnath Wildlife Sanctuary - Himalayan Peaks",
+                "distanceFromCenter": 95.7
+            },
+            "contactInfo": {
+                "phone": "+91-135-123-4567",
+                "email": "info@himalayanbasecamp.in",
+                "website": "https://www.himalayanecolodge.com"
+            },
+            "checkInOutPolicy": {
+                "checkInTime": "13:00",
+                "checkOutTime": "10:00",
+                "cancellationPolicy": "Free cancellation up to 7 days before arrival due to weather conditions"
+            },
+            "lowestPrice": 75.00,
+            "isAvailable": true
         }
     ];
 }
 
 public function initializeRooms() returns Room[] {
     return [
+        {
+            "roomId": "room_mountain_001",
+            "hotelId": "hotel_india_himalayan_001",
+            "roomType": "Mountain Cabin",
+            "roomName": "Stone Mountain Cabin",
+            "description": "Traditional stone and timber cabin with panoramic Himalayan views. Features wood-burning stove, thick yak wool blankets, and minimal electricity usage. Designed for high-altitude comfort with authentic mountain experience.",
+            "maxOccupancy": 2,
+            "pricePerNight": 75.00d,
+            "images": [
+                "https://images.example.com/rooms/india_stone_exterior.jpg",
+                "https://images.example.com/rooms/india_stone_interior.jpg",
+                "https://images.example.com/rooms/india_stone_fireplace.jpg"
+            ],
+            "amenities": [
+                "Stone Construction",
+                "Wood Burning Stove",
+                "Panoramic Mountain Views",
+                "Yak Wool Blankets",
+                "Traditional Furniture",
+                "Minimal Lighting",
+                "Shared Bathroom Facilities",
+                "Hot Water Bottles",
+                "Prayer Area",
+                "Meditation Corner",
+                "Mountain Water",
+                "Organic Toiletries",
+                "Altitude Sickness Kit",
+                "Emergency Oxygen"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 2,
+                "doubleBeds": 0,
+                "kingBeds": 0,
+                "queenBeds": 0
+            },
+            "roomSize": 22.0d,
+            "availableCount": 8
+        },
+        {
+            "roomId": "room_green_001",
+            "hotelId": "hotel_malaysia_fake_eco_001",
+            "roomType": "Deluxe Room",
+            "roomName": "Green Deluxe Room",
+            "description": "Modern air-conditioned room with contemporary furnishings and garden views. Features standard hotel amenities with minimal actual eco-friendly practices despite green marketing.",
+            "maxOccupancy": 2,
+            "pricePerNight": 120.00d,
+            "images": [
+                "https://images.example.com/rooms/malaysia_green_interior.jpg",
+                "https://images.example.com/rooms/malaysia_green_bathroom.jpg",
+                "https://images.example.com/rooms/malaysia_green_balcony.jpg"
+            ],
+            "amenities": [
+                "Air Conditioning",
+                "Flat Screen TV",
+                "Mini Bar",
+                "WiFi",
+                "Garden View",
+                "Private Balcony",
+                "Hair Dryer",
+                "Safe",
+                "Coffee Machine",
+                "Room Service",
+                "Daily Housekeeping",
+                "Bathrobes",
+                "Slippers",
+                "Turndown Service"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 0,
+                "doubleBeds": 1,
+                "kingBeds": 0,
+                "queenBeds": 0
+            },
+            "roomSize": 35.0d,
+            "availableCount": 45
+        },
         {
             "roomId": "room_bambarakiri_tea_001",
             "hotelId": "hotel_srilanka_bambarakiri_001",
@@ -525,6 +753,42 @@ public function initializeRooms() returns Room[] {
             },
             "roomSize": 45.0,
             "availableCount": 6
+        },
+        {
+            "roomId": "room_bamboo_001",
+            "hotelId": "hotel_indonesia_eco_001",
+            "roomType": "Eco Cabin",
+            "roomName": "Bamboo Forest Cabin",
+            "description": "Elevated bamboo cabin with panoramic rainforest views, natural ventilation, and minimal environmental impact. Features handcrafted bamboo furniture, organic cotton linens, and a private deck for wildlife observation.",
+            "maxOccupancy": 2,
+            "pricePerNight": 85.00,
+            "images": [
+                "https://images.example.com/rooms/indonesia_bamboo_exterior.jpg",
+                "https://images.example.com/rooms/indonesia_bamboo_interior.jpg",
+                "https://images.example.com/rooms/indonesia_bamboo_deck.jpg"
+            ],
+            "amenities": [
+                "Natural Bamboo Construction",
+                "Rainforest Canopy View",
+                "Private Observation Deck",
+                "Mosquito Netting",
+                "Organic Cotton Linens",
+                "Eco-Friendly Toiletries",
+                "Solar Lighting",
+                "Natural Ventilation",
+                "Wildlife Viewing Area",
+                "Composting Toilet",
+                "Rainwater Shower",
+                "Reading Hammock"
+            ],
+            "bedConfiguration": {
+                "singleBeds": 1,
+                "doubleBeds": 0,
+                "kingBeds": 0,
+                "queenBeds": 0
+            },
+            "roomSize": 30.0,
+            "availableCount": 12
         },
         {
             "roomId": "room_bambarakiri_heritage_001",
