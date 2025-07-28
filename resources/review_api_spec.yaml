@@ -1,0 +1,291 @@
+openapi: 3.0.1
+info:
+  title: Main Openapi Yaml
+  version: 0.1.0
+servers:
+- url: "{server}:{port}/"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "9090"
+paths:
+  /auth/profile:
+    get:
+      operationId: getAuthProfile
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/User'
+                - $ref: '#/components/schemas/ErrorResponse'
+  /hotels/{hotelId}/reviews:
+    get:
+      operationId: getHotelsHotelidReviews
+      parameters:
+      - name: hotelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Review'
+                - $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+    post:
+      operationId: postHotelsHotelidReviews
+      parameters:
+      - name: hotelId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewRequest'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/SuccessResponse'
+                - $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+  /reviews:
+    get:
+      operationId: getReviews
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Review'
+                - $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorPayload:
+      required:
+      - message
+      - method
+      - path
+      - reason
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    ErrorResponse:
+      required:
+      - errorCode
+      - message
+      - timestamp
+      type: object
+      properties:
+        message:
+          type: string
+        errorCode:
+          type: string
+        timestamp:
+          type: string
+      additionalProperties: false
+    Review:
+      required:
+      - categories
+      - comment
+      - hotelId
+      - isVerifiedStay
+      - rating
+      - reviewDate
+      - reviewId
+      - title
+      - userId
+      - userName
+      type: object
+      properties:
+        reviewId:
+          type: string
+        hotelId:
+          type: string
+        userId:
+          type: string
+        userName:
+          type: string
+        rating:
+          type: number
+          format: double
+        title:
+          type: string
+        comment:
+          type: string
+        reviewDate:
+          type: string
+        categories:
+          $ref: '#/components/schemas/ReviewCategories'
+        isVerifiedStay:
+          type: boolean
+      additionalProperties: false
+    ReviewCategories:
+      required:
+      - cleanliness
+      - comfort
+      - location
+      - service
+      - valueForMoney
+      type: object
+      properties:
+        cleanliness:
+          type: number
+          format: double
+        comfort:
+          type: number
+          format: double
+        location:
+          type: number
+          format: double
+        service:
+          type: number
+          format: double
+        valueForMoney:
+          type: number
+          format: double
+      additionalProperties: false
+    ReviewRequest:
+      required:
+      - categories
+      - comment
+      - rating
+      - title
+      type: object
+      properties:
+        rating:
+          type: number
+          format: double
+        title:
+          type: string
+        comment:
+          type: string
+        categories:
+          $ref: '#/components/schemas/ReviewCategories'
+      additionalProperties: false
+    SuccessResponse:
+      required:
+      - message
+      - timestamp
+      type: object
+      properties:
+        message:
+          type: string
+        timestamp:
+          type: string
+      additionalProperties: false
+    User:
+      required:
+      - authClaims
+      - email
+      - firstName
+      - lastName
+      - phoneNumber
+      - profilePicture
+      - registrationDate
+      - userId
+      - userType
+      type: object
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+          nullable: true
+        profilePicture:
+          type: string
+          nullable: true
+        registrationDate:
+          type: string
+        userType:
+          type: string
+        authClaims:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/UserClaims'
+      additionalProperties: false
+    UserClaims:
+      required:
+      - email
+      - family_name
+      - given_name
+      - sub
+      type: object
+      properties:
+        sub:
+          type: string
+        email:
+          type: string
+        given_name:
+          type: string
+        family_name:
+          type: string
+        phone_number:
+          type: string
+        picture:
+          type: string
+        groups:
+          type: array
+          items:
+            type: string
+        preferred_username:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        organization:
+          type: string
+      additionalProperties: false

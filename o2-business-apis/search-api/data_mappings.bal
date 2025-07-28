@@ -9,10 +9,7 @@ public function initializeHotels() returns Hotel[] {
             "city": "Matale",
             "country": "Sri Lanka",
             "images": [
-                "https://images.example.com/srilanka/knuckles_wilderness_main.jpg",
-                "https://images.example.com/srilanka/knuckles_wilderness_room.jpg",
-                "https://images.example.com/srilanka/knuckles_wilderness_dining.jpg",
-                "https://images.example.com/srilanka/knuckles_wilderness_view.jpg"
+                "https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/o2-business-apis/data/images/hotel_srilanka_knuckles_001.jpeg"
             ],
             "rating": 4.7,
             "reviewCount": 423,
@@ -57,9 +54,7 @@ public function initializeHotels() returns Hotel[] {
             "city": "Matale",
             "country": "Sri Lanka",
             "images": [
-                "https://images.example.com/srilanka/bambarakiri_main.jpg",
-                "https://images.example.com/srilanka/bambarakiri_tea_view.jpg",
-                "https://images.example.com/srilanka/bambarakiri_room_interior.jpg"
+                "https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/o2-business-apis/data/images/hotel_srilanka_bambarakiri_001.jpeg"
             ],
             "rating": 4.3,
             "reviewCount": 287,
@@ -102,9 +97,7 @@ public function initializeHotels() returns Hotel[] {
             "city": "Matale",
             "country": "Sri Lanka",
             "images": [
-                "https://images.example.com/srilanka/greenvalley_pool.jpg",
-                "https://images.example.com/srilanka/greenvalley_lobby.jpg",
-                "https://images.example.com/srilanka/greenvalley_suite.jpg"
+                "https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/o2-business-apis/data/images/hotel_srilanka_greenvalley_001.jpeg"
             ],
             "rating": 3.8,
             "reviewCount": 156,

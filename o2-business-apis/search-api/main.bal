@@ -1,6 +1,6 @@
 import ballerina/http;
 
-listener http:Listener hotelSearchService = new (port = 9090);
+listener http:Listener hotelSearchService = new (port = 9083);
 
 // In-memory data storage
 Hotel[] hotels = initializeHotels();
@@ -20,6 +20,9 @@ NearbyAttractionsResponse[] nearbyAttractions = initializeNearbyAttractions();
     }
 }
 service / on hotelSearchService {
+    resource function get healthcheck() returns boolean {
+        return true;
+    }
 
     // Search Hotels (Public endpoint)
     resource function get hotels/search(string? destination, string? checkInDate, string? checkOutDate,
@@ -76,28 +79,23 @@ service / on hotelSearchService {
     }
 
     // Get Nearby Attractions (Public endpoint)
-    resource function get hotels/[string hotelId]/attractions() returns NearbyAttractionsResponse|ErrorResponse {
+    resource function get hotels/[string hotelId]/attractions() returns NearbyAttractionsResponse {
         foreach NearbyAttractionsResponse attraction in nearbyAttractions {
             if (attraction.hotelId == hotelId) {
                 return attraction;
             }
         }
         return {
-            message: "No nearby attractions found for this hotel",
-            errorCode: "NO_ATTRACTIONS_FOUND",
-            timestamp: getCurrentTimestamp()
+            hotelId: hotelId,
+            attractions: []
         };
     }
 
     // Get Hotel Details (Public endpoint)
-    resource function get hotels/[string hotelId]() returns HotelDetailsResponse|ErrorResponse {
+    resource function get hotels/[string hotelId]() returns HotelDetailsResponse|http:NotFound {
         Hotel? hotel = findHotelById(hotels, hotelId);
         if hotel is () {
-            return {
-                message: "Hotel not found",
-                errorCode: "HOTEL_NOT_FOUND",
-                timestamp: getCurrentTimestamp()
-            };
+            return http:NOT_FOUND;
         }
 
         Room[] hotelRooms = getAvailableRooms(rooms, hotelId);
@@ -119,14 +117,10 @@ service / on hotelSearchService {
 
     // Check Room Availability (Public endpoint)
     resource function get hotels/[string hotelId]/availability(string checkInDate, string checkOutDate,
-            int guests = 2, int roomCount = 1) returns AvailabilityResponse|ErrorResponse {
+            int guests = 2, int roomCount = 1) returns AvailabilityResponse|http:NotFound {
         Hotel? hotel = findHotelById(hotels, hotelId);
         if hotel is () {
-            return {
-                message: "Hotel not found",
-                errorCode: "HOTEL_NOT_FOUND",
-                timestamp: getCurrentTimestamp()
-            };
+            return http:NOT_FOUND;
         }
 
         Room[] availableRooms = getAvailableRooms(rooms, hotelId);

@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 
-listener http:Listener hotelBookingService = new (port = 9090);
+listener http:Listener hotelBookingService = new (port = 9081);
 
 // In-memory data storage
 Hotel[] hotels = initializeHotels();
@@ -30,22 +30,9 @@ service / on hotelBookingService {
         return user;
     }
 
-    // Create Booking (Protected endpoint)
-    resource function post bookings(http:Request request, @http:Payload BookingRequest bookingRequest) returns BookingResponse|ErrorResponse {
+    // Create Booking
+    resource function post bookings(@http:Payload BookingRequest bookingRequest) returns BookingResponse|ErrorResponse {
         // Extract authentication context from gateway headers
-        AuthContext|error authContext = extractAuthContext(request);
-
-        if authContext is error {
-            log:printError("Authentication failed", authContext);
-            return {
-                message: "Authentication required",
-                errorCode: "AUTH_REQUIRED",
-                timestamp: getCurrentTimestamp()
-            };
-        }
-
-        User user = findOrCreateUser(users, authContext.userClaims);
-
         // Validate hotel exists
         Hotel? hotel = findHotelById(hotels, bookingRequest.hotelId);
         if hotel is () {
@@ -94,7 +81,7 @@ service / on hotelBookingService {
             bookingId: bookingId,
             hotelId: bookingRequest.hotelId,
             rooms: bookingRequest.rooms,
-            userId: user.userId,
+            userId: bookingRequest.userId,
             checkInDate: bookingRequest.checkInDate,
             checkOutDate: bookingRequest.checkOutDate,
             numberOfGuests: bookingRequest.numberOfGuests,
@@ -108,35 +95,7 @@ service / on hotelBookingService {
 
         bookings.push(newBooking);
 
-        // Update room availability
-        foreach int i in 0 ..< rooms.length() {
-            foreach RoomConfiguration roomRequest in bookingRequest.rooms {
-                if rooms[i].roomId == roomRequest.roomId && rooms[i].availableCount >= roomRequest.numberOfRooms {
-                    rooms[i] = {
-                        roomId: rooms[i].roomId,
-                        hotelId: rooms[i].hotelId,
-                        roomType: rooms[i].roomType,
-                        roomName: rooms[i].roomName,
-                        description: rooms[i].description,
-                        maxOccupancy: rooms[i].maxOccupancy,
-                        pricePerNight: rooms[i].pricePerNight,
-                        images: rooms[i].images,
-                        amenities: rooms[i].amenities,
-                        bedConfiguration: rooms[i].bedConfiguration,
-                        roomSize: rooms[i].roomSize,
-                        availableCount: rooms[i].availableCount - bookingRequest.numberOfRooms
-                    };
-                    break;
-                } else {
-                    return {
-                        message: "Insufficient room availability",
-                        errorCode: "INSUFFICIENT_ROOM_AVAILABILITY",
-                        timestamp: getCurrentTimestamp()
-                    };
-                }
-            }
-        }
-        log:printInfo("Booking created for user: " + user.userId + ", booking ID: " + bookingId);
+        log:printInfo("Booking created for user: " + bookingRequest.userId + ", booking ID: " + bookingId);
 
         return {
             bookingId: bookingId,

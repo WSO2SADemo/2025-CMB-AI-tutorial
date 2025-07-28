@@ -10,6 +10,16 @@ servers:
     port:
       default: "9090"
 paths:
+  /healthcheck:
+    get:
+      operationId: getHealthcheck
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: boolean
   /hotels/search:
     get:
       operationId: getHotelsSearch
@@ -104,9 +114,9 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/NearbyAttractionsResponse'
-                - $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NearbyAttractionsResponse'
+        "404":
+          description: NotFound
         "400":
           description: BadRequest
           content:
@@ -128,9 +138,9 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/HotelDetailsResponse'
-                - $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/HotelDetailsResponse'
+        "404":
+          description: NotFound
         "400":
           description: BadRequest
           content:
@@ -174,9 +184,9 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/AvailabilityResponse'
-                - $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/AvailabilityResponse'
+        "404":
+          description: NotFound
         "400":
           description: BadRequest
           content:
@@ -281,20 +291,6 @@ components:
           type: string
         method:
           type: string
-    ErrorResponse:
-      required:
-      - errorCode
-      - message
-      - timestamp
-      type: object
-      properties:
-        message:
-          type: string
-        errorCode:
-          type: string
-        timestamp:
-          type: string
-      additionalProperties: false
     Hotel:
       required:
       - address

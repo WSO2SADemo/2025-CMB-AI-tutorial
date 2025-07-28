@@ -7,7 +7,7 @@ User[] users = [];
 Booking[] bookings = initializeBookings();
 final Review[] reviews = initializeReviews();
 
-listener http:Listener hotelAdminService = new (port = 9090);
+listener http:Listener hotelAdminService = new (port = 9080);
 
 service / on hotelAdminService {
 

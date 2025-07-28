@@ -137,6 +137,7 @@ public type PriceRange record {|
 |};
 
 public type BookingRequest record {|
+    string userId;
     string hotelId;
     RoomConfiguration[] rooms;
     string checkInDate;
