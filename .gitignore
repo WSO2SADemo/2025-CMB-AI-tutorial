@@ -12,3 +12,15 @@ Config.toml
 
 .DS_Store
 .idea
+
+**/.venv/
+**/__pycache__/
+**/*.log
+**/*.env
+**/*.egg-info/
+**/dist/
+**/build/
+**/node_modules/
+**/.DS_Store
+**/logs/
+**/venv/
