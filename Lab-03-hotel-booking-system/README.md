@@ -10,7 +10,7 @@ As AI agents become more prevalent, securing them becomes a critical concern. Ho
 This project provides a comprehensive solution to these challenges, demonstrating how to:
 
 - **Manage Agent Identities:** Securely manage the identities of your AI agents, ensuring that they can be trusted and verified.
-- **Authenticate and Authorize Users:** Secure your AI agents by ensuring that only authenticated and authorized users can interact with them.
+- **Authenticate and Authorize Agents:** Secure your AI agents by ensuring that only authenticated and authorized agents can invoke actions on their own or on behalf of users.
 - **Implement Fine-Grained Access Control:** Use OAuth 2.0 scopes to define and enforce fine-grained permissions for your AI agents, controlling what actions they can perform.
 - **Secure Communication:** Protect the communication between your frontend, backend, and AI agents using industry-standard protocols.
 
@@ -31,15 +31,14 @@ The architecture of the Gardeo Hotel booking system is designed to provide a sec
 The system is composed of several key components working together to provide a secure AI agent experience:
 
 #### User-Facing Layer
-- **Browser:** The client interface where users interact with the system
-- **User Facing Front End:** A React application that provides the user interface for searching, booking, and managing hotel reservations
+- **User Facing Front End:** A React application that provides the user interface for searching, booking, and managing hotel reservations. Specially the chat interface that users can interact with the AI agent.
 
 #### AI Agent Layer
-- **Booking Assistant Agent:** An intelligent agent powered by a Large Language Model (LLM) that can understand natural language requests and perform booking operations
-- **Staff Allocation Agent:** A specialized agent that handles staff scheduling and resource allocation, also powered by the same LLM infrastructure
+- **Booking Assistant Agent:** An interactive agent that can understand natural language requests and perform booking operations
+- **Staff Allocation Agent:** A  ambient agent that run on background and handles staff scheduling and resource allocation.
 
 #### Backend Services Layer
-- **Auth Gateway (Auth GW):** Central authentication and authorization service powered by Asgardeo
+- **Gateway (Auth GW):** Central authentication and authorization service powered by Asgardeo
 - **Staff Management Services:** Handles employee data, scheduling, and staff-related operations
 - **Booking System Backend Services:** Core business logic for hotel reservations, room management, and booking operations
 
@@ -48,8 +47,7 @@ The system is composed of several key components working together to provide a s
 The security model implements several key principles:
 
 #### 1. **Identity-Based Security**
-- Each AI agent has its own secure identity managed through Asgardeo
-- Users must authenticate before interacting with any AI agents
+- Each AI agent has its own identity managed through Asgardeo
 - All interactions are traced back to authenticated identities
 
 #### 2. **Tool-Based Access Control**
@@ -62,22 +60,16 @@ The security model implements several key principles:
 - Fine-grained scopes control what each agent can access
 - Tokens are validated at multiple layers to ensure security
 
-#### 4. **Separation of Concerns**
-- Frontend handles user experience and basic validation
-- AI agents focus on natural language processing and decision-making
-- Backend services handle business logic and data persistence
-- Authentication is centralized through Asgardeo
-
 ### Data Flow and Security
 
 1. **User Authentication:** Users authenticate through the frontend, which coordinates with Asgardeo via the Auth Gateway
-2. **Agent Authorization:** When users interact with AI agents, the agents must present valid tokens to access backend services
+2. **Agent Authorization:** When users interact with AI agents, the agents must authorized by users and present valid tokens to access backend services
 3. **Controlled Access:** AI agents can only access backend services through predefined tools, each with specific permissions
 4. **Audit Trail:** All interactions are logged and can be traced back to specific users and agents
 
 ## Key Security Features
 
-### Multi-Agent Security
+### Agent Security
 - **Agent Isolation:** Each AI agent operates with its own security context and permissions
 - **Cross-Agent Communication:** Secure communication channels between different AI agents when needed
 - **Centralized Identity Management:** All agent identities managed through a single, secure system
@@ -90,7 +82,6 @@ The security model implements several key principles:
 ### Secure Tool Integration
 - **API Gateway Pattern:** All backend access goes through controlled tool interfaces
 - **Token Validation:** Every tool call includes token validation and scope checking
-- **Rate Limiting:** Prevents abuse and ensures system stability
 
 ## Getting Started
 
