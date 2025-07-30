@@ -89,23 +89,22 @@ To get started with this project, you can use either Docker or a native setup. F
 
 ### Prerequisites
 
-- Docker and Docker Compose (for Docker setup)
 - Python 3.11+, Node.js 16+, and other dependencies listed in `SETUP.md` (for native setup)
 - An Asgardeo account and application configuration
 
-### Quick Start (with Docker)
+### Quick Start
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/hotel-booking-system.git
-   cd hotel-booking-system
+   git clone https://github.com/wso2con/2025-CMB-AI-tutorial.git
+   cd Lab-03-hotel-booking-system
    ```
 
 2. Configure your Asgardeo settings in the environment variables
 
-3. Start the services using Docker Compose:
+3. Start the services using:
    ```bash
-   docker-compose up -d
+   sh start-services.sh
    ```
 
 4. The application will be available at `http://localhost:3000`
