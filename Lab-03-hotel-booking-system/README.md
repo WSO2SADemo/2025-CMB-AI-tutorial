@@ -5,7 +5,7 @@ As AI agents become more prevalent, securing them becomes a critical concern. Ho
 This project demonstrates how to secure AI agents using [Asgardeo](https://wso2.com/asgardeo/). We use a hotel booking system as a practical use case to showcase how to implement robust security measures for your AI agents, ensuring that they operate within a secure and controlled environment. In this project, we demonstrate,
 
 - **Manage Agent Identities:** Securely manage the identities of your AI agents, ensuring that they can be trusted and verified.
-- **Authenticate and Authorize Users:** Secure your AI agents by ensuring that only authenticated and authorized users can interact with them.
+- **Authenticate and Authorize Agents:** Secure your AI agents by ensuring that only authenticated and authorized agents can invoke actions on their own or on behalf of users.
 - **Implement Fine-Grained Access Control:** Use OAuth 2.0 scopes to define and enforce fine-grained permissions for your AI agents, controlling what actions they can perform.
 - **Secure Communication:** Protect the communication between your frontend, backend, and AI agents using industry-standard protocols.
 
@@ -25,11 +25,10 @@ To get started with this project, you can use either Docker or a native setup. F
 
 ### Prerequisites
 
-- Docker and Docker Compose (for Docker setup)
 - Python 3.11+, Node.js 16+, and other dependencies listed in `SETUP.md` (for native setup)
 - An Asgardeo account and a configured application
 
-### Quick Start (with Docker)
+### Quick Start
 
 1. Clone the repository.
 
@@ -46,10 +45,9 @@ cp frontend/.env.example .env
 cp backend/.env.example .env
 ```
 
-3. Start the services using Docker Compose:
-
+3. Start the services using:
    ```bash
-   docker-compose up -d
+   sh start-services.sh
    ```
 
 4. The application will be available at `http://localhost:3000`
