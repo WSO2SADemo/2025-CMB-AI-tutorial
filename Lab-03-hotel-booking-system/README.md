@@ -178,7 +178,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 - [Asgardeo Documentation](https://wso2.com/asgardeo/docs/)
 - [OAuth 2.0 Security Best Practices](https://tools.ietf.org/html/draft-ietf-oauth-security-topics)
-- [AI Agent Security Guidelines](https://example.com/ai-security)
 
 ---
 
