@@ -35,6 +35,8 @@ hotelSearchApiUrl = "http://localhost:9083"
 bookingApiUrl = "http://localhost:9081"
 ```
 
+Additionally, Go to VSCode Command palette(View -> Command Palette) and search for "Configure Default wso2 model provider" to set up the default model provider configuration.
+
 ### Configuration Notes
 - `userId`: Default user identifier for personalization and profile retrieval
 - `pgHost`, `pgPort`, `pgDatabase`, `pgUser`, `pgPassword`: PostgreSQL connection for accessing user profiles and preferences

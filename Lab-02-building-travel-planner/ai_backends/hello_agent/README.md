@@ -11,8 +11,7 @@ This project implements a **Simple Chat Agent Pattern** where:
 - Minimal configuration for quick setup and testing
 
 ## Configuration
-
-Invoke Ballerina: Configure Default wso2 model provider from vscode command palette to generate the default model provider configuration.
+Go to VSCode Command palette(View -> Command Palette) and search for "Configure Default wso2 model provider" to set up the default model provider configuration.
 
 ### Configuration Notes
 - This hello world example uses default configurations
