@@ -56,7 +56,7 @@ const HotelSearch = () => {
 
   // Function to get hotel image URL
   const getHotelImageUrl = (hotel) => {
-    return `https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/o2-business-apis/data/images/${hotel.hotelId}.jpeg`;
+    return `https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/Lab-02-building-travel-planner/o2-business-apis/data/images/${hotel.hotelId}.jpeg`;
   };
 
   // Load initial hotels when component mounts
@@ -140,7 +140,7 @@ const HotelSearch = () => {
 
   const handleImageError = (e, hotel) => {
     // If the primary image fails, try the placeholder URL
-    const placeholderUrl = `https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/hotel-apis/data/images/${hotel.hotelId}`;
+    const placeholderUrl = `https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/Lab-02-building-travel-planner/hotel-apis/data/images/${hotel.hotelId}`;
     if (e.target.src !== placeholderUrl) {
       e.target.src = placeholderUrl;
     } else {
