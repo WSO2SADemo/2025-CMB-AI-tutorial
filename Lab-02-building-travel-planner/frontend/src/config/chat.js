@@ -3,7 +3,7 @@ const chatConfig = {
   endpoints: {
     chat: "/chat"
   },
-  timeout: 30000 // 30 seconds timeout
+  timeout: 120000 // 2 minutes timeout
 };
 
 export default chatConfig;
