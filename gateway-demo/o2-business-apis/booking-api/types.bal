@@ -158,12 +158,12 @@ public type GuestDetails record {|
     string lastName;
     string email;
     string phoneNumber;
-    string? nationality;
+    // string? nationality?;
 |};
 
 public type SpecialRequests record {|
-    string? dietaryRequirements;
-    string? accessibilityNeeds;
+    string? dietaryRequirements?;
+    string? accessibilityNeeds?;
     string? bedPreference;
     boolean petFriendly?;
     string otherRequests?;

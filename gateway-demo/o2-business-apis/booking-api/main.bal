@@ -1,6 +1,8 @@
 import ballerina/http;
 import ballerina/log;
 
+listener http:Listener hotelBookingService = new (port = 9081);
+
 // In-memory data storage
 Hotel[] hotels = initializeHotels();
 Room[] rooms = initializeRooms();
@@ -8,7 +10,7 @@ User[] users = [];
 Booking[] bookings = initializeBookings();
 final Review[] reviews = initializeReviews();
 
-service / on new http:Listener(9090) {
+service / on hotelBookingService {
 
     // Get Current User Profile (Protected endpoint)
     resource function get auth/profile(http:Request request) returns User|ErrorResponse {

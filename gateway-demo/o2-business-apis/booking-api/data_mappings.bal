@@ -1855,8 +1855,7 @@ public function initializeBookings() returns Booking[] {
                 "firstName": "John",
                 "lastName": "Harrison",
                 "email": "john.harrison@gmail.com",
-                "phoneNumber": "+1-604-555-0123",
-                "nationality": "Canadian"
+                "phoneNumber": "+1-604-555-0123"
             },
             "pricing": [
                 {
@@ -1886,8 +1885,7 @@ public function initializeBookings() returns Booking[] {
                 "firstName": "John",
                 "lastName": "Harrison",
                 "email": "john.harrison@gmail.com",
-                "phoneNumber": "+1-604-555-0123",
-                "nationality": "Canadian"
+                "phoneNumber": "+1-604-555-0123"
             },
             "pricing": [
                 {
@@ -1922,8 +1920,7 @@ public function initializeBookings() returns Booking[] {
                 "firstName": "John",
                 "lastName": "Harrison",
                 "email": "john.harrison@gmail.com",
-                "phoneNumber": "+1-604-555-0123",
-                "nationality": "Canadian"
+                "phoneNumber": "+1-604-555-0123"
             },
             "pricing": [
                 {
@@ -1964,8 +1961,7 @@ public function initializeBookings() returns Booking[] {
                 firstName: "John",
                 lastName: "Smith",
                 email: "john.smith@email.com",
-                phoneNumber: "+1-555-1234",
-                nationality: "US"
+                phoneNumber: "+1-555-1234"
             },
             pricing: [
                 {
@@ -2000,8 +1996,7 @@ public function initializeBookings() returns Booking[] {
                 firstName: "John",
                 lastName: "Smith",
                 email: "john.smith@email.com",
-                phoneNumber: "+1-555-1234",
-                nationality: "US"
+                phoneNumber: "+1-555-1234"
             },
             pricing: [
                 {
@@ -2036,8 +2031,7 @@ public function initializeBookings() returns Booking[] {
                 firstName: "Sarah",
                 lastName: "Johnson",
                 email: "sarah.j@email.com",
-                phoneNumber: "+1-555-5678",
-                nationality: "CA"
+                phoneNumber: "+1-555-5678"
             },
             pricing: [
                 {
@@ -2072,8 +2066,7 @@ public function initializeBookings() returns Booking[] {
                 firstName: "Michael",
                 lastName: "Brown",
                 email: "m.brown@email.com",
-                phoneNumber: "+1-555-9012",
-                nationality: "US"
+                phoneNumber: "+1-555-9012"
             },
             pricing: [
                 {
@@ -2108,8 +2101,7 @@ public function initializeBookings() returns Booking[] {
                 firstName: "Sarah",
                 lastName: "Johnson",
                 email: "sarah.j@email.com",
-                phoneNumber: "+1-555-5678",
-                nationality: "CA"
+                phoneNumber: "+1-555-5678"
             },
             pricing: [
                 {
@@ -2144,8 +2136,7 @@ public function initializeBookings() returns Booking[] {
                 firstName: "Emily",
                 lastName: "Davis",
                 email: "emily.d@email.com",
-                phoneNumber: "+1-555-3456",
-                nationality: "UK"
+                phoneNumber: "+1-555-3456"
             },
             pricing: [
                 {
