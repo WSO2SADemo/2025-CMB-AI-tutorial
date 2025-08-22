@@ -1,7 +1,5 @@
 import ballerina/http;
 
-listener http:Listener hotelSearchService = new (port = 9083);
-
 // In-memory data storage
 Hotel[] hotels = initializeHotels();
 Room[] rooms = initializeRooms();
@@ -10,7 +8,7 @@ Booking[] bookings = initializeBookings();
 final Review[] reviews = initializeReviews();
 NearbyAttractionsResponse[] nearbyAttractions = initializeNearbyAttractions();
 
-service / on hotelSearchService {
+service / on new http:Listener(9090) {
     resource function get healthcheck() returns boolean {
         return true;
     }
