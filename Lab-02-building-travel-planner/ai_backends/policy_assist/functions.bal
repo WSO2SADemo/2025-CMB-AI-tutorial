@@ -4,7 +4,7 @@ isolated function getHotelFilters(string hotelId) returns ai:MetadataFilters {
     ai:MetadataFilters filters = {
         filters: [
             {
-                key: "id",
+                key: "hotelId",
                 value: hotelId
             }
         ]

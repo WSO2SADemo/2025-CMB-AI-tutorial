@@ -1,4 +1,4 @@
 type Metadata record {|
-    string id;
-    string name;
+    string hotelId;
+    string hotelName;
 |};
