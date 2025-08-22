@@ -1,0 +1,7 @@
+User Name: ${"John Smith"}
+User ID: ${"user_john_001"}
+UTC Time now:
+${time:utcToString(time:utcNow())}
+
+User Query:
+${request.message}

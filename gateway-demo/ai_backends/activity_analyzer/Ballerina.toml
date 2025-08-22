@@ -1,0 +1,17 @@
+[package]
+org = "wso2"
+name = "activity_analyzer"
+version = "0.1.0"
+
+[build-options]
+sticky = true
+
+[[tool.openapi]]
+id = "adminApi"
+targetModule = "adminApi"
+filePath = "/Users/wso2/2025-CMB-AI-tutorial/resources/admin_api_spec.yaml"
+
+[[tool.openapi]]
+id = "hotelSearchApi"
+targetModule = "hotelSearchApi"
+filePath = "/Users/wso2/2025-CMB-AI-tutorial/resources/search_api_spec.yaml"

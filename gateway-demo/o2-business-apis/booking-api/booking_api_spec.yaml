@@ -1,0 +1,382 @@
+openapi: 3.0.1
+info:
+  title: Main Openapi Yaml
+  version: 0.1.0
+servers:
+- url: "{server}:{port}/"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "9090"
+paths:
+  /auth/profile:
+    get:
+      operationId: getAuthProfile
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/User'
+                - $ref: '#/components/schemas/ErrorResponse'
+  /bookings:
+    get:
+      operationId: getBookings
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Booking'
+                - $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: postBookings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingRequest'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/BookingResponse'
+                - $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+  /bookings/{bookingId}:
+    get:
+      operationId: getBookingsBookingid
+      parameters:
+      - name: bookingId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/Booking'
+                - $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+components:
+  schemas:
+    Booking:
+      required:
+      - bookingDate
+      - bookingId
+      - bookingStatus
+      - checkInDate
+      - checkOutDate
+      - confirmationNumber
+      - hotelId
+      - numberOfGuests
+      - pricing
+      - primaryGuest
+      - rooms
+      - specialRequests
+      - userId
+      type: object
+      properties:
+        bookingId:
+          type: string
+        hotelId:
+          type: string
+        rooms:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoomConfiguration'
+        userId:
+          type: string
+        checkInDate:
+          type: string
+        checkOutDate:
+          type: string
+        numberOfGuests:
+          type: integer
+          format: int64
+        primaryGuest:
+          $ref: '#/components/schemas/GuestDetails'
+        pricing:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingPricing'
+        bookingStatus:
+          type: string
+        bookingDate:
+          type: string
+        confirmationNumber:
+          type: string
+        specialRequests:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/SpecialRequests'
+      additionalProperties: false
+    BookingPricing:
+      required:
+      - currency
+      - numberOfNights
+      - roomRate
+      - serviceFees
+      - subtotal
+      - taxes
+      - totalAmount
+      type: object
+      properties:
+        roomRate:
+          type: number
+          format: double
+        numberOfNights:
+          type: integer
+          format: int64
+        subtotal:
+          type: number
+          format: double
+        taxes:
+          type: number
+          format: double
+        serviceFees:
+          type: number
+          format: double
+        totalAmount:
+          type: number
+          format: double
+        currency:
+          type: string
+      additionalProperties: false
+    BookingRequest:
+      required:
+      - checkInDate
+      - checkOutDate
+      - hotelId
+      - numberOfGuests
+      - numberOfRooms
+      - primaryGuest
+      - rooms
+      - specialRequests
+      type: object
+      properties:
+        hotelId:
+          type: string
+        rooms:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoomConfiguration'
+        checkInDate:
+          type: string
+        checkOutDate:
+          type: string
+        numberOfGuests:
+          type: integer
+          format: int64
+        numberOfRooms:
+          type: integer
+          format: int64
+        primaryGuest:
+          $ref: '#/components/schemas/GuestDetails'
+        specialRequests:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/SpecialRequests'
+      additionalProperties: false
+    BookingResponse:
+      required:
+      - bookingDetails
+      - bookingId
+      - confirmationNumber
+      - message
+      type: object
+      properties:
+        bookingId:
+          type: string
+        confirmationNumber:
+          type: string
+        message:
+          type: string
+        bookingDetails:
+          $ref: '#/components/schemas/Booking'
+      additionalProperties: false
+    ErrorPayload:
+      required:
+      - message
+      - method
+      - path
+      - reason
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    ErrorResponse:
+      required:
+      - errorCode
+      - message
+      - timestamp
+      type: object
+      properties:
+        message:
+          type: string
+        errorCode:
+          type: string
+        timestamp:
+          type: string
+      additionalProperties: false
+    GuestDetails:
+      required:
+      - email
+      - firstName
+      - lastName
+      - nationality
+      - phoneNumber
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        nationality:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RoomConfiguration:
+      required:
+      - numberOfRooms
+      - roomId
+      type: object
+      properties:
+        roomId:
+          type: string
+        numberOfRooms:
+          type: integer
+          format: int64
+      additionalProperties: false
+    SpecialRequests:
+      required:
+      - accessibilityNeeds
+      - bedPreference
+      - dietaryRequirements
+      type: object
+      properties:
+        dietaryRequirements:
+          type: string
+          nullable: true
+        accessibilityNeeds:
+          type: string
+          nullable: true
+        bedPreference:
+          type: string
+          nullable: true
+        petFriendly:
+          type: boolean
+        otherRequests:
+          type: string
+      additionalProperties: false
+    User:
+      required:
+      - authClaims
+      - email
+      - firstName
+      - lastName
+      - phoneNumber
+      - profilePicture
+      - registrationDate
+      - userId
+      - userType
+      type: object
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+          nullable: true
+        profilePicture:
+          type: string
+          nullable: true
+        registrationDate:
+          type: string
+        userType:
+          type: string
+        authClaims:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/UserClaims'
+      additionalProperties: false
+    UserClaims:
+      required:
+      - email
+      - family_name
+      - given_name
+      - sub
+      type: object
+      properties:
+        sub:
+          type: string
+        email:
+          type: string
+        given_name:
+          type: string
+        family_name:
+          type: string
+        phone_number:
+          type: string
+        picture:
+          type: string
+        groups:
+          type: array
+          items:
+            type: string
+        preferred_username:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+        organization:
+          type: string
+      additionalProperties: false

@@ -1,0 +1,528 @@
+openapi: 3.0.1
+info:
+  title: Main Openapi Yaml
+  version: 0.1.0
+servers:
+- url: "{server}:{port}/"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "9090"
+paths:
+  /healthcheck:
+    get:
+      operationId: getHealthcheck
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: boolean
+  /hotels/search:
+    get:
+      operationId: getHotelsSearch
+      parameters:
+      - name: destination
+        in: query
+        schema:
+          type: string
+          nullable: true
+      - name: checkInDate
+        in: query
+        schema:
+          type: string
+          nullable: true
+      - name: checkOutDate
+        in: query
+        schema:
+          type: string
+          nullable: true
+      - name: guests
+        in: query
+        schema:
+          type: integer
+          format: int64
+          default: 2
+      - name: rooms
+        in: query
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      - name: minPrice
+        in: query
+        schema:
+          type: number
+          format: double
+          nullable: true
+      - name: maxPrice
+        in: query
+        schema:
+          type: number
+          format: double
+          nullable: true
+      - name: minRating
+        in: query
+        schema:
+          type: number
+          format: double
+          nullable: true
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+          nullable: true
+      - name: page
+        in: query
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          format: int64
+          default: 10
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelSearchResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+  /hotels/{hotelId}:
+    get:
+      operationId: getHotelsHotelid
+      parameters:
+      - name: hotelId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelDetailsResponse'
+        "404":
+          description: NotFound
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+components:
+  schemas:
+    BedConfiguration:
+      required:
+      - doubleBeds
+      - kingBeds
+      - queenBeds
+      - singleBeds
+      type: object
+      properties:
+        singleBeds:
+          type: integer
+          format: int64
+        doubleBeds:
+          type: integer
+          format: int64
+        kingBeds:
+          type: integer
+          format: int64
+        queenBeds:
+          type: integer
+          format: int64
+      additionalProperties: false
+    CheckInOutPolicy:
+      required:
+      - cancellationPolicy
+      - checkInTime
+      - checkOutTime
+      type: object
+      properties:
+        checkInTime:
+          type: string
+        checkOutTime:
+          type: string
+        cancellationPolicy:
+          type: string
+      additionalProperties: false
+    ContactInfo:
+      required:
+      - email
+      - phone
+      - website
+      type: object
+      properties:
+        phone:
+          type: string
+        email:
+          type: string
+        website:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ErrorPayload:
+      required:
+      - message
+      - method
+      - path
+      - reason
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    Hotel:
+      required:
+      - address
+      - amenities
+      - checkInOutPolicy
+      - city
+      - contactInfo
+      - country
+      - description
+      - hotelId
+      - hotelName
+      - images
+      - isAvailable
+      - location
+      - lowestPrice
+      - propertyType
+      - rating
+      - reviewCount
+      type: object
+      properties:
+        hotelId:
+          type: string
+        hotelName:
+          type: string
+        description:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        rating:
+          type: number
+          format: double
+        reviewCount:
+          type: integer
+          format: int64
+        amenities:
+          type: array
+          items:
+            type: string
+        propertyType:
+          type: array
+          items:
+            type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        contactInfo:
+          $ref: '#/components/schemas/ContactInfo'
+        checkInOutPolicy:
+          $ref: '#/components/schemas/CheckInOutPolicy'
+        lowestPrice:
+          type: number
+          format: double
+        isAvailable:
+          type: boolean
+      additionalProperties: false
+    HotelDetailsResponse:
+      required:
+      - hotel
+      - nearbyAttractions
+      - recentReviews
+      - rooms
+      type: object
+      properties:
+        hotel:
+          $ref: '#/components/schemas/Hotel'
+        rooms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Room'
+        recentReviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+        nearbyAttractions:
+          type: array
+          items:
+            $ref: '#/components/schemas/NearbyAttractions'
+      additionalProperties: false
+    HotelSearchResponse:
+      required:
+      - hotels
+      - metadata
+      type: object
+      properties:
+        hotels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Hotel'
+        metadata:
+          $ref: '#/components/schemas/SearchMetadata'
+      additionalProperties: false
+    Location:
+      required:
+      - latitude
+      - longitude
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        landmark:
+          type: string
+        distanceFromCenter:
+          type: number
+          format: double
+      additionalProperties: false
+    NearbyAttractions:
+      required:
+      - category
+      - distance
+      - location
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        category:
+          type: string
+        distance:
+          type: number
+          format: double
+        location:
+          $ref: '#/components/schemas/Location'
+      additionalProperties: false
+    PriceRange:
+      required:
+      - max
+      - min
+      type: object
+      properties:
+        min:
+          type: number
+          format: double
+        max:
+          type: number
+          format: double
+      additionalProperties: false
+    Review:
+      required:
+      - categories
+      - comment
+      - hotelId
+      - isVerifiedStay
+      - rating
+      - reviewDate
+      - reviewId
+      - title
+      - userId
+      - userName
+      type: object
+      properties:
+        reviewId:
+          type: string
+        hotelId:
+          type: string
+        userId:
+          type: string
+        userName:
+          type: string
+        rating:
+          type: number
+          format: double
+        title:
+          type: string
+        comment:
+          type: string
+        reviewDate:
+          type: string
+        categories:
+          $ref: '#/components/schemas/ReviewCategories'
+        isVerifiedStay:
+          type: boolean
+      additionalProperties: false
+    ReviewCategories:
+      required:
+      - cleanliness
+      - comfort
+      - location
+      - service
+      - valueForMoney
+      type: object
+      properties:
+        cleanliness:
+          type: number
+          format: double
+        comfort:
+          type: number
+          format: double
+        location:
+          type: number
+          format: double
+        service:
+          type: number
+          format: double
+        valueForMoney:
+          type: number
+          format: double
+      additionalProperties: false
+    Room:
+      required:
+      - amenities
+      - availableCount
+      - bedConfiguration
+      - description
+      - hotelId
+      - images
+      - maxOccupancy
+      - pricePerNight
+      - roomId
+      - roomName
+      - roomSize
+      - roomType
+      type: object
+      properties:
+        roomId:
+          type: string
+        hotelId:
+          type: string
+        roomType:
+          type: string
+        roomName:
+          type: string
+        description:
+          type: string
+        maxOccupancy:
+          type: integer
+          format: int64
+        pricePerNight:
+          type: number
+          format: double
+        images:
+          type: array
+          items:
+            type: string
+        amenities:
+          type: array
+          items:
+            type: string
+        bedConfiguration:
+          $ref: '#/components/schemas/BedConfiguration'
+        roomSize:
+          type: number
+          format: double
+        availableCount:
+          type: integer
+          format: int64
+      additionalProperties: false
+    SearchFilters:
+      required:
+      - amenities
+      - checkInDate
+      - checkOutDate
+      - destination
+      - guests
+      - minRating
+      - priceRange
+      - propertyTypes
+      - rooms
+      type: object
+      properties:
+        destination:
+          type: string
+          nullable: true
+        checkInDate:
+          type: string
+          nullable: true
+        checkOutDate:
+          type: string
+          nullable: true
+        guests:
+          type: integer
+          format: int64
+        rooms:
+          type: integer
+          format: int64
+        priceRange:
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/PriceRange'
+        minRating:
+          type: number
+          format: double
+          nullable: true
+        amenities:
+          type: array
+          nullable: true
+          items:
+            type: string
+        propertyTypes:
+          type: array
+          nullable: true
+          items:
+            type: string
+      additionalProperties: false
+    SearchMetadata:
+      required:
+      - appliedFilters
+      - currentPage
+      - pageSize
+      - totalPages
+      - totalResults
+      type: object
+      properties:
+        totalResults:
+          type: integer
+          format: int64
+        currentPage:
+          type: integer
+          format: int64
+        totalPages:
+          type: integer
+          format: int64
+        pageSize:
+          type: integer
+          format: int64
+        appliedFilters:
+          $ref: '#/components/schemas/SearchFilters'
+      additionalProperties: false

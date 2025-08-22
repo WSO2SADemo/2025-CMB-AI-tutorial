@@ -1,0 +1,7 @@
+[package]
+org = "nadheesh"
+name = "o2_hotel"
+version = "0.1.0"
+
+[build-options]
+sticky = true
