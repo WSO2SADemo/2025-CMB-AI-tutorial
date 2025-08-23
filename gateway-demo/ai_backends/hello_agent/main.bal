@@ -2,6 +2,7 @@ import ballerina/ai;
 import ballerina/http;
 import ballerina/log;
 import ballerina/time;
+import ballerina/lang.value;
 
 listener ai:Listener travelPlannerListener = new (listenOn = check new http:Listener(9090, timeout = 120));
 
@@ -24,13 +25,37 @@ ${time:utcToString(time:utcNow())}
 User Query:
 ${request.message}
 `, request.sessionId);
-        if agentResp is error {
-            if agentResp.message() == "Unable to obtain valid answer from the agent" {
+        if agentResp is ai:Error {
+            boolean|error guardrailTriggered = isGuardRailsTriggered(agentResp);
+            if guardrailTriggered is boolean && guardrailTriggered {
                 return {message: "For safety and policy reasons, I can’t respond to that."};
             }
-            log:printError("Error in agent", 'error = agentResp);
+            log:printError("Error from AI service", 'error = agentResp);
             return {message: "Unknown error occurred"};
         }
         return {message: agentResp};
     }
+}
+
+
+function isGuardRailsTriggered(ai:Error aiError) returns boolean|error {
+    map<value:Cloneable> & readonly detail = aiError.detail();
+    value:Cloneable & readonly steps = detail.get("steps");
+    if steps is error[] {
+        foreach error err in steps {
+            error? cause = err.cause();
+            if cause is () {
+                continue;
+            }
+            map<value:Cloneable> & readonly detailResult = cause.detail();
+            if detailResult.hasKey("statusCode") {
+                int statusCode = check detailResult.get("statusCode").ensureType();
+                if statusCode == 446 {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
 }
