@@ -1,0 +1,154 @@
+openapi: 3.0.1
+info:
+  title: Loyalty
+  version: 0.1.0
+servers:
+- url: "{server}:{port}/loyalty"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "9090"
+paths:
+  /consume/{userId}:
+    post:
+      operationId: postConsumeUserid
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+  /add:
+    post:
+      operationId: postAdd
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddLoyaltyRequest'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyUpdateResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+  /reset:
+    post:
+      operationId: postReset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetLoyaltyRequest'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyUpdateResponse'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+components:
+  schemas:
+    AddLoyaltyRequest:
+      required:
+      - spendingAmount
+      - userId
+      type: object
+      properties:
+        userId:
+          type: string
+        spendingAmount:
+          type: number
+          format: double
+      additionalProperties: false
+    ErrorPayload:
+      required:
+      - message
+      - method
+      - path
+      - reason
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    LoyaltyResponse:
+      required:
+      - loyaltyDiscountInDollars
+      - userId
+      type: object
+      properties:
+        userId:
+          type: string
+        loyaltyDiscountInDollars:
+          type: number
+          format: double
+      additionalProperties: false
+    LoyaltyUpdateResponse:
+      required:
+      - message
+      - totalLoyaltyPoints
+      - userId
+      type: object
+      properties:
+        userId:
+          type: string
+        totalLoyaltyPoints:
+          type: number
+          format: double
+        message:
+          type: string
+      additionalProperties: false
+    ResetLoyaltyRequest:
+      required:
+      - newPoints
+      - userId
+      type: object
+      properties:
+        userId:
+          type: string
+        newPoints:
+          type: number
+          format: double
+      additionalProperties: false
