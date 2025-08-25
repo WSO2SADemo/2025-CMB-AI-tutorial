@@ -172,7 +172,7 @@ public function initializeHotels() returns Hotel[] {
             address: "456 Ocean Drive",
             city: "Miami",
             country: "United States",
-            images: ["https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/Lab-02-building-travel-planner/o2-business-apis/data/images/miami.png"],
+            images: ["https://raw.githubusercontent.com/wso2con/2025-CMB-AI-tutorial/refs/heads/main/gateway-demo/o2-business-apis/data/images/miami.png"],
             rating: 4.6,
             reviewCount: 1923,
             amenities: ["Beach Access", "Water Sports", "Multiple Pools", "Spa", "5 Restaurants", "Kids Club", "Tennis Court"],
