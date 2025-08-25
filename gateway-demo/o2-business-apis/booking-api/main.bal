@@ -92,7 +92,7 @@ service / on new http:Listener(9090) {
             bookingStatus: "CONFIRMED",
             bookingDate: getCurrentTimestamp(),
             confirmationNumber: confirmationNumber,
-            specialRequests: bookingRequest.specialRequests
+            specialRequests: ()
         };
 
         bookings.push(newBooking);

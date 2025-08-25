@@ -136,7 +136,7 @@ public type PriceRange record {|
     decimal max;
 |};
 
-public type BookingRequest record {|
+public type BookingRequest record {
     string userId;
     string hotelId;
     RoomConfiguration[] rooms;
@@ -145,8 +145,8 @@ public type BookingRequest record {|
     int numberOfGuests;
     int numberOfRooms;
     GuestDetails primaryGuest;
-    SpecialRequests? specialRequests;
-|};
+    // SpecialRequests? specialRequests;
+};
 
 public type RoomConfiguration record {|
     string roomId;
