@@ -8,6 +8,15 @@ User[] users = [];
 Booking[] bookings = initializeBookings();
 final Review[] reviews = initializeReviews();
 
+@http:ServiceConfig {
+    cors: {
+        allowOrigins: ["http://localhost:3000"], // Specify exact origin instead of "*"
+        allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowHeaders: ["Content-Type", "Authorization", "Accept"],
+        allowCredentials: true, // This is the key missing configuration
+        maxAge: 84900
+    }
+}
 service / on new http:Listener(9090) {
 
     resource function get healthcheck() returns boolean {
@@ -108,24 +117,11 @@ service / on new http:Listener(9090) {
     }
 
     // Get User Bookings (Protected endpoint)
-    resource function get bookings(http:Request request) returns Booking[]|ErrorResponse {
-        // Extract authentication context from gateway headers
-        AuthContext|error authContext = extractAuthContext(request);
-
-        if authContext is error {
-            log:printError("Authentication failed", authContext);
-            return {
-                message: "Authentication required",
-                errorCode: "AUTH_REQUIRED",
-                timestamp: getCurrentTimestamp()
-            };
-        }
-
-        AuthContext context = authContext;
+    resource function get bookings(string userId) returns Booking[]|ErrorResponse {
 
         Booking[] userBookings = [];
         foreach Booking booking in bookings {
-            if booking.userId == context.userId {
+            if booking.userId == userId {
                 userBookings.push(booking);
             }
         }
@@ -169,4 +165,60 @@ service / on new http:Listener(9090) {
             timestamp: getCurrentTimestamp()
         };
     }
+
+    resource function put bookings/[string bookingId]/cancel(http:Request request) returns Booking|ErrorResponse {
+
+        foreach int i in 0 ..< bookings.length() {
+            if bookings[i].bookingId == bookingId {
+                // Check if user owns this booking
+                
+                // Update booking status to cancelled
+                bookings[i].bookingStatus = "CANCELLED";
+                
+                log:printInfo("Booking cancelled for  booking ID: " + bookingId);
+                
+                return bookings[i];
+            }
+        }
+
+        return {
+            message: "Booking not found",
+            errorCode: "BOOKING_NOT_FOUND",
+            timestamp: getCurrentTimestamp()
+        };
+    }
+
+    // Delete All User Bookings
+    resource function delete bookings(string userId) returns SuccessResponse|ErrorResponse {
+        // Filter out bookings for the specified user
+        Booking[] remainingBookings = [];
+        int deletedCount = 0;
+        
+        foreach Booking booking in bookings {
+            if booking.userId != userId {
+                remainingBookings.push(booking);
+            } else {
+                deletedCount += 1;
+            }
+        }
+        
+        // Update the global bookings array
+        bookings = remainingBookings;
+        
+        if deletedCount == 0 {
+            return {
+                message: "No bookings found for user: " + userId,
+                errorCode: "NO_BOOKINGS_FOUND",
+                timestamp: getCurrentTimestamp()
+            };
+        }
+        
+        log:printInfo("Deleted " + deletedCount.toString() + " booking(s) for user: " + userId);
+        
+        return {
+            message: "Successfully deleted " + deletedCount.toString() + " booking(s) for user: " + userId,
+            timestamp: getCurrentTimestamp()
+        };
+    }
+
 }

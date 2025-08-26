@@ -282,3 +282,9 @@ type UserBooking record {|
     BedConfiguration hotelBedConfiguration;
     decimal hotelRoomSize;
 |};
+
+type GetBookingsRequest record {|
+    string userId;
+    int page;
+    int pageSize;
+|};
