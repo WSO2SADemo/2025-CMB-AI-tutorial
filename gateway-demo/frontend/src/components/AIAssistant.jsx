@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { User } from '@asgardeo/react';
-import { ChatService } from '../services/chatService';
+import { ChatService, resetChatSession } from '../services/chatService';
 import chatConfig from '../config/chat';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -75,6 +75,18 @@ const AIAssistant = () => {
   // Exit chat view
   const exitChatView = () => {
     setChatView(false);
+  };
+
+  // Clear chat and reset session
+  const handleClearChat = () => {
+    resetChatSession();
+    setMessages([
+      { 
+        role: 'assistant', 
+        content: '# Welcome to your Travel Planner! 👋\n\nI\'m your AI travel assistant, ready to help you plan your next adventure. I can help with finding destinations, recommending hotels, suggesting activities, and providing travel tips.\n\n**How can I assist with your travel plans today?**'
+      }
+    ]);
+    setError(null);
   };
 
   return (
@@ -322,6 +334,21 @@ const AIAssistant = () => {
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <button 
+                type="button" 
+                className="clear-button" 
+                onClick={handleClearChat} 
+                title="Clear conversation"
+                disabled={isTyping}
+              >
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 6h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M10 11v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M14 11v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
             </div>
