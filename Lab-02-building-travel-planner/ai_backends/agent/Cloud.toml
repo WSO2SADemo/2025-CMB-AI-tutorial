@@ -1,0 +1,3 @@
+[[container.copy.files]]
+sourceFile="./yamls/" # Path to the external file
+target="/home/ballerina/yamls" # Path of the file in the container

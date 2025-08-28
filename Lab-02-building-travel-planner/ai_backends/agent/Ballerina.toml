@@ -9,9 +9,9 @@ sticky = true
 [[tool.openapi]]
 id = "hotelSearchApi"
 targetModule = "hotelSearchApi"
-filePath = "/Users/wso2/asia-con/resources/search_api_spec.yaml"
+filePath = "./yamls/search_api_spec.yaml"
 
 [[tool.openapi]]
 id = "bookingApi"
 targetModule = "bookingApi"
-filePath = "/Users/wso2/asia-con/resources/booking_api_spec.yaml"
+filePath = "./yamls/booking_api_spec.yaml"
